@@ -2,31 +2,19 @@
     require_once('../../includes/Database.class.php');
 
     class Department {
-        public static function create_department($name, $description, $entrepreneurs) {
+        public static function create_department($department_name, $description, $department_entrepreneur) {
             $database = new Database();
             $conn = $database->getConnection();
 
-            $stmt = $conn->prepare('INSERT INTO department (name, description, entrepreneurs) VALUES(:name, :description, :entrepreneurs)');
-            $stmt->bindParam(':name', $name);
+            $stmt = $conn->prepare('INSERT INTO department (department_name, description, department_entrepreneur) VALUES(:department_name, :description, :department_entrepreneur)');
+            $stmt->bindParam(':department_name', $department_name);
             $stmt->bindParam(':description', $description);
-            $stmt->bindParam(':entrepreneurs', $entrepreneurs);
+            $stmt->bindParam(':department_entrepreneur', $department_entrepreneur);
 
             if($stmt->execute()) {  
                 header('HTTP/1.1 201 Departamento fue creada correctamente'); 
             } else {
                 header('HTTP/1.1 404 Departamento no se pudo crear correctamente');  
-            }
-        }
-        public static function delete_department_by_id($id){
-            $database = new Database();
-            $conn = $database->getConnection();
-
-            $stmt = $conn->prepare('DELETE FROM deparment WHERE id=:id');
-            $stmt->bindParam(':id',$id);
-            if($stmt->execute()){
-                header('HTTP/1.1 201 Departamento fue borrado correctamente'); 
-            } else {
-                header('HTTP/1.1 404 Departamento no se a podido borrar correctamente');
             }
         }
         public static function get_all_departments() {
@@ -37,29 +25,39 @@
             if($stmt->execute()) {
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-                // Establecer la cabecera de tipo de contenido a JSON antes de cualquier salida
                 header('Content-Type: application/json');
-                echo json_encode($result); // Enviar el resultado como JSON
+                echo json_encode($result);
             } else {
-                // Si hay un error, envía un código de error
                 header('HTTP/1.1 500 Internal Server Error');
                 echo json_encode(['message' => 'Error al obtener los departamentos']);
             }
         }
-        public static function update_department($id, $name, $description, $entrepreneurs) {
+        public static function update_department($department_id, $department_name, $description, $department_entrepreneur) {
             $database = new Database();
             $conn = $database->getConnection();
 
-            $stmt = $conn->prepare('UPDATE deparment SET name=:name, description=:description, entrepreneurs=:entrepreneurs WHERE id=:id');
-            $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':name', $name);
+            $stmt = $conn->prepare('UPDATE deparment SET department_name=:department_name, description=:description, department_entrepreneur=:department_entrepreneur WHERE department_id=:department_id');
+            $stmt->bindParam(':department_id', $department_id);
+            $stmt->bindParam(':department_name', $department_name);
             $stmt->bindParam(':description', $description);
-            $stmt->bindParam(':entrepreneurs', $entrepreneurs);
+            $stmt->bindParam(':department_entrepreneur', $department_entrepreneur);
 
             if($stmt->execute()){
                 header('HTTP/1.1 201 Departamento actualizada correctamente');
             } else {
                 header('HTTP/1.1 404 Departamento no se pudo actualizar correctamente');
+            }
+        }
+        public static function delete_department_by_id($department_id){
+            $database = new Database();
+            $conn = $database->getConnection();
+
+            $stmt = $conn->prepare('DELETE FROM deparment WHERE department_id=:department_id');
+            $stmt->bindParam(':department_id',$department_id);
+            if($stmt->execute()){
+                header('HTTP/1.1 201 Departamento fue borrado correctamente'); 
+            } else {
+                header('HTTP/1.1 404 Departamento no se a podido borrar correctamente');
             }
         }
     }
