@@ -35,3 +35,12 @@ CREATE TABLE national_calls (
     FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE,
     FOREIGN KEY (township_id) REFERENCES township(township_id) ON DELETE CASCADE
 );
+
+CREATE TABLE product (
+    product_id INT AUTO_INCREMENT,
+    product_name VARCHAR(100),
+    product_description TEXT,
+    procuct_date DATE,
+    product_offer TINYINT(1),
+    product_image VARCHAR(255)
+);

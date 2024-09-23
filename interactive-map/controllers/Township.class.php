@@ -20,8 +20,13 @@
         public static function get_all_townships() {
             $database = new Database();
             $conn = $database->getConnection();
-            $stmt = $conn->prepare('SELECT * FROM township');
-            
+        
+            $stmt = $conn->prepare('
+                SELECT t.township_id, t.township_name, t.township_entrepreneur, t.department_id, d.department_name 
+                FROM township t
+                JOIN department d ON t.department_id = d.department_id
+            ');
+        
             if($stmt->execute()) {
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
