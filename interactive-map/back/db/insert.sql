@@ -15,7 +15,7 @@ INSERT INTO department (department_name, description, department_entrepreneur) V
 ("Córdoba", "Ubicado en la costa norte, conocido por su producción agrícola y ganadera. Montería es un importante centro económico de la región con su riqueza cultural", 9000),
 ("Cundinamarca", "Región que rodea la capital de Colombia, Bogotá, y que incluye áreas rurales con rica tradición agrícola. Es conocida por su diversidad cultural y su importancia económica en el país", 30000),
 ("Guainía", "Región selvática con baja densidad poblacional, rica en recursos naturales y biodiversidad. Inírida es un centro cultural de la región", 500),
-("Guajira", "Región conocida por sus paisajes desérticos y cultura indígena, habitada en gran parte por la comunidad Wayuu, famosa por su artesanía y tradiciones", 4000),
+("La Guajira", "Región conocida por sus paisajes desérticos y cultura indígena, habitada en gran parte por la comunidad Wayuu, famosa por su artesanía y tradiciones", 4000),
 ("Guaviare", "Región con áreas selváticas y actividades agrícolas, conocida por su biodiversidad y cultura indígena. San José del Guaviare es su capital", 1000),
 ("Huila", "Región productora de café y cacao en el suroeste de Colombia, conocida por sus paisajes naturales y su clima cálido. Neiva es la capital del departamento", 5000),
 ("Magdalena", "Conocido por la ciudad de Santa Marta y su costa caribeña, este departamento es un importante destino turístico con su Parque Tayrona y su biodiversidad", 5000),
