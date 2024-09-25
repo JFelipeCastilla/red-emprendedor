@@ -1,7 +1,7 @@
 // departmentsService.js
 const url = "http://localhost/red-emprendedor/interactive-map/back/apps/department/";
 
-const departmentsService = {
+const departmentService = {
     getAllDepartments: async () => {
         try {
             const response = await fetch(`${url}get_all_departments.php`);
@@ -90,4 +90,4 @@ const departmentsService = {
     }
 };
 
-export default departmentsService;
+export default departmentService;

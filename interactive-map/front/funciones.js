@@ -114,43 +114,50 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Llamada a la API para obtener la información de los departamentos
-    fetch("http://localhost/api-map/api-rest/department/get_all_departments.php")
-        .then(response => response.json())
-        .then(departments => {
-            if (Array.isArray(departments)) {
-                regions.forEach(region => {
-                    region.addEventListener("click", function () {
-                        const selectedRegionName = this.getAttribute("title");
+ // Llamada a la API para obtener la información de los departamentos
+    fetch("http://localhost/red-emprendedor/interactive-map/back/apps/department/get_all_departments.php")
+    .then(response => {
+        // Verifica si la respuesta es exitosa
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json(); // Convierte la respuesta a JSON
+    })
+    .then(departments => {
+        if (Array.isArray(departments)) {
+            // Asumiendo que "regions" es una lista de elementos que representan las regiones en el DOM
+            regions.forEach(region => {
+                region.addEventListener("click", function () {
+                    const selectedRegionName = this.getAttribute("title");
 
-                        regionName.textContent = `Región: ${selectedRegionName}`;
+                    // Muestra el nombre de la región seleccionada
+                    regionName.textContent = `Región: ${selectedRegionName}`;
 
-                        const department = departments.find(dep =>
-                            dep.name.toLowerCase().trim() === selectedRegionName.toLowerCase().trim()
-                        );
+                    // Encuentra el departamento correspondiente
+                    const department = departments.find(dep =>
+                        dep.department_name.toLowerCase().trim() === selectedRegionName.toLowerCase().trim()
+                    );
 
-                        if (department) {
-                            regionInfo.innerHTML = `
-                        <div class="data-field"><strong>ID:</strong> ${department.id}</div>
-                        <div class="data-field"><strong>Descripción:</strong> ${department.description}</div>
-                        <div class="extra-info">
-                            <div class="data-field"><strong>Capital:</strong> ${department.capital}</div>
-                            <div class="data-field"><strong>Población:</strong> ${department.population} km²</div>
-                            <div class="data-field"><strong>PIB:</strong> ${department.gdp}</div>
-                            <div class="data-field"><strong>Tasa de Desempleo (%)</strong> ${department.unemployment_rate}</div>
-                            <div class="data-field"><strong>Emprendimientos:</strong> ${department.entrepreneurs}</div>                        
-                        </div>
+                    // Verifica si el departamento existe y muestra la información
+                    if (department) {
+                        regionInfo.innerHTML = `
+                            <div class="data-field"><strong>ID:</strong> ${department.department_id}</div>
+                            <div class="data-field"><strong>Descripción:</strong> ${department.description}</div>
+                            <div class="extra-info">
+                                <div class="data-field"><strong>Emprendimientos:</strong> ${department.department_entrepreneur}</div>                        
+                            </div>
                         `;
-                        } else {
-                            regionInfo.innerHTML = `<p>Información no disponible para esta región.</p>`;
-                        }
-                    });
+                    } else {
+                        regionInfo.innerHTML = `<p>Información no disponible para esta región.</p>`;
+                    }
                 });
-            } else {
-                console.error("La respuesta no es un array válido de departamentos.");
-            }
-        })
-        .catch(error => {
-            console.error("Error al obtener la información de la API:", error);
-        });
+            });
+        } else {
+            console.error("La respuesta no es un array válido de departamentos.");
+        }
+    })
+    .catch(error => {
+        console.error("Error al obtener la información de la API:", error);
+    });
+
 });
