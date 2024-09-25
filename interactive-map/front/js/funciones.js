@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    
+
     // Mover el path y el texto al frente
     document.querySelectorAll('.map-container path').forEach(function (path) {
         path.addEventListener('mouseover', function () {
@@ -161,3 +163,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
