@@ -1,4 +1,3 @@
-// departmentsService.js
 const url = "http://localhost/red-emprendedor/interactive-map/back/apps/department/";
 
 const departmentService = {

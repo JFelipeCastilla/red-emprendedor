@@ -40,6 +40,29 @@ class Township {
         }
     }
 
+    public static function get_townships_by_department($department_id) {
+        $database = new Database();
+        $conn = $database->getConnection();
+        
+        $stmt = $conn->prepare('
+            SELECT t.township_id, t.township_name, t.township_entrepreneur, t.department_id, d.department_name 
+            FROM township t
+            JOIN department d ON t.department_id = d.department_id
+            WHERE t.department_id = :department_id
+        ');
+    
+        $stmt->bindParam(':department_id', $department_id, PDO::PARAM_INT);
+        
+        if ($stmt->execute()) {
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            header('Content-Type: application/json');
+            echo json_encode($result);
+        } else {
+            header('HTTP/1.1 500 Internal Server Error');
+            echo json_encode(['message' => 'Error al obtener los municipios']);
+        }
+    }    
+
     public static function update_township($township_id, $township_name, $township_entrepreneur, $department_id) {
         $database = new Database();
         $conn = $database->getConnection();
