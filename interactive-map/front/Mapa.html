@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css">
 </head>
 
 <body>
@@ -37,9 +38,8 @@
     </header>
 
     <div class="container"><button 
-        id="toggle-map" class="mobile-only">Mapa</button>
-        <div class="container-map"></div>            
-            <div class="map" id="map-container" >
+        id="toggle-map" class="mobile-only">Mapa</button>   
+            <div class="map-container" id="map-container" >
                 <svg xmlns:mapsvg="http://mapsvg.com" xmlns:dc="http://purl.org/dc/elements/1.1/"
                     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
                     xmlns="http://www.w3.org/2000/svg" mapsvg:geoViewBox="-81.721283 12.590653 -66.868938 -4.237159"
@@ -153,10 +153,11 @@
                     <canvas id="entrepreneurshipChart"></canvas>
                 </div>
             </div>        
-        </div>   
+        
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="./views/department.js"></script>
+    <script type="module" src="./funciones.js"></script>
 </body>
 </html>
