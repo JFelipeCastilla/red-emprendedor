@@ -5,12 +5,12 @@ class Category {
     public static function create_category($category_name, $category_entrepreneur, $category_image) {
         $database = new Database();
         $conn = $database->getConnection();
-
+    
         $stmt = $conn->prepare('INSERT INTO category(category_name, category_entrepreneur, category_image) VALUES(:category_name, :category_entrepreneur, :category_image)');
         $stmt->bindParam(':category_name', $category_name);
         $stmt->bindParam(':category_entrepreneur', $category_entrepreneur);
         $stmt->bindParam(':category_image', $category_image);
-
+    
         if ($stmt->execute()) {  
             header('HTTP/1.1 201 Created'); 
             echo json_encode(['message' => 'Categoría creada correctamente']);

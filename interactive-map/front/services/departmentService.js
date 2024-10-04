@@ -1,4 +1,4 @@
-const url = "http://localhost/red-emprendedor/interactive-map/back/apps/department/";
+const url = "http://localhost/red-emprendedor/interactive-map/back/api/department/";
 
 const departmentService = {
     getAllDepartments: async () => {
