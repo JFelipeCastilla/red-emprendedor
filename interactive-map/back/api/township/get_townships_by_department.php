@@ -8,9 +8,14 @@
         exit();
     }
 
-    require('../../controllers/Township.class.php');
+    require('../../models/Township.class.php');
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        Township::get_all_townships();
+        if (isset($_GET['department_id'])) {
+            $department_id = intval($_GET['department_id']);
+            Township::get_townships_by_department($department_id);
+        } else {
+            Township::get_all_townships();
+        }
     }
 ?>

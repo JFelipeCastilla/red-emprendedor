@@ -2,13 +2,14 @@
 require_once('../../includes/Database.class.php');
 
 class Category {
-    public static function create_category($name, $amount_users) {
+    public static function create_category($category_name, $category_entrepreneur, $category_image) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('INSERT INTO category(name, amount_users) VALUES(:name, :amount_users)');
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':amount_users', $amount_users);
+        $stmt = $conn->prepare('INSERT INTO category(category_name, category_entrepreneur, category_image) VALUES(:category_name, :category_entrepreneur, :category_image)');
+        $stmt->bindParam(':category_name', $category_name);
+        $stmt->bindParam(':category_entrepreneur', $category_entrepreneur);
+        $stmt->bindParam(':category_image', $category_image);
 
         if ($stmt->execute()) {  
             header('HTTP/1.1 201 Created'); 
@@ -19,12 +20,12 @@ class Category {
         }
     }
 
-    public static function delete_category_by_id($id) {
+    public static function delete_category_by_id($category_id) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('DELETE FROM category WHERE id=:id');
-        $stmt->bindParam(':id', $id);
+        $stmt = $conn->prepare('DELETE FROM category WHERE category_id=:category_id');
+        $stmt->bindParam(':category_id', $category_id);
         
         if ($stmt->execute()) {
             header('HTTP/1.1 204 No Content'); 
@@ -49,14 +50,15 @@ class Category {
         }
     }
 
-    public static function update_category($id, $name, $amount_users) {
+    public static function update_category($category_id, $category_name, $category_entrepreneur, $category_image) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('UPDATE category SET name=:name, amount_users=:amount_users WHERE id=:id');
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':amount_users', $amount_users);
+        $stmt = $conn->prepare('UPDATE category SET category_name=:category_name, category_entrepreneur=:category_entrepreneur, category_image=:category_image WHERE category_id=:category_id');
+        $stmt->bindParam(':category_id', $category_id);
+        $stmt->bindParam(':category_name', $category_name);
+        $stmt->bindParam(':category_entrepreneur', $category_entrepreneur);
+        $stmt->bindParam(':category_image', $category_image);
 
         if ($stmt->execute()) {
             header('HTTP/1.1 200 OK'); 

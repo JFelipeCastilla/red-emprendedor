@@ -8,7 +8,7 @@
         exit();
     }
 
-    require('../../controllers/Department.class.php');
+    require('../../models/Department.class.php');
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         Department::get_all_departments();

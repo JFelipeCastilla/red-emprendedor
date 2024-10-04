@@ -25,6 +25,7 @@ CREATE TABLE category (
 	category_id INT AUTO_INCREMENT,
     category_name varchar(150) NOT NULL,
     category_entrepreneur INT,
+    category_image VARCHAR(255),
     PRIMARY KEY (category_id)
 );
 
