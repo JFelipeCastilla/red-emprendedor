@@ -1,4 +1,4 @@
-const url = "http://localhost/red-emprendedor/interactive-map/back/apps/township/";
+const url = "http://localhost/red-emprendedor/interactive-map/back/api/township/";
 
 const townshipService = {
     getAllTownships: async () => {

@@ -1188,3 +1188,6 @@ INSERT INTO township (township_name, township_entrepreneur, department_id) VALUE
 ('La Primavera', 250, 33),
 ('Santa Rosalía', 200, 33),
 ('Cumaribo', 150, 33);
+
+INSERT INTO Category (name, amount_users, image_category)
+("Tecnología", 241, )
