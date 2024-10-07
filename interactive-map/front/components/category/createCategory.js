@@ -20,14 +20,20 @@ categoryForm.addEventListener('submit', async (event) => {
 
     try {
         const result = await categoryService.createCategory(category, imageFile);
-        successMessage.textContent = 'Categoría creada exitosamente: ' + result.category_name;
-        errorMessage.textContent = '';
-        categoryForm.reset(); 
+
+        // Verificar que el backend envió una respuesta JSON válida y que todo salió bien
+        if (result && result.message && result.category_name) {
+            successMessage.textContent = 'Categoría creada exitosamente: ' + result.category_name;
+            errorMessage.textContent = '';
+            categoryForm.reset();
+        } else {
+            throw new Error('Respuesta inesperada del servidor.');
+        }
     } catch (error) {
         errorMessage.textContent = 'Error al crear la categoría: ' + error.message;
         successMessage.textContent = '';
         console.log('Datos de la categoría:', category);
-console.log('Archivo de imagen:', imageFile);
-
+        console.log('Archivo de imagen:', imageFile);
     }
 });
+
