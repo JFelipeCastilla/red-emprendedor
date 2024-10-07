@@ -16,16 +16,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Manejar la subida de archivos
     if (isset($_FILES['category_image']) && $_FILES['category_image']['error'] == UPLOAD_ERR_OK) {
         $category_image = $_FILES['category_image']['name'];
-        $upload_path = __DIR__ . '/../uploads/' . basename($category_image); // Ajustado para que apunte a 'uploads'
+        $upload_path = __DIR__ . '/../uploads/' . basename($category_image);
 
         // Mover el archivo a la carpeta de uploads
         if (!move_uploaded_file($_FILES['category_image']['tmp_name'], $upload_path)) {
             header('HTTP/1.1 500 Internal Server Error');
+            header('Content-Type: application/json');
             echo json_encode(['message' => 'Error al subir la imagen']);
             exit;
         }
     } else {
         header('HTTP/1.1 400 Bad Request');
+        header('Content-Type: application/json');
         echo json_encode(['message' => 'Error en la subida de archivos: ' . $_FILES['category_image']['error']]);
         exit;
     }
@@ -36,20 +38,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verificar que los parámetros necesarios están presentes
     if (isset($data['category_name']) && isset($data['category_entrepreneur'])) {
         try {
-            // Llama al método para crear la categoría
             Category::create_category($data['category_name'], $data['category_entrepreneur'], $category_image);
+            header('Content-Type: application/json');
             echo json_encode(['message' => 'Categoría creada exitosamente']);
         } catch (Exception $e) {
             header('HTTP/1.1 500 Internal Server Error');
+            header('Content-Type: application/json');
             echo json_encode(['message' => 'Error al crear la categoría: ' . $e->getMessage()]);
             exit;
         }
     } else {
         header('HTTP/1.1 400 Bad Request');
+        header('Content-Type: application/json');
         echo json_encode(['message' => 'Faltan parámetros']);
         exit;
     }
 } else {
     header('HTTP/1.1 405 Method Not Allowed');
+    header('Content-Type: application/json');
 }
 ?>
