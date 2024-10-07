@@ -22,9 +22,9 @@ async function loadDepartments() {
 
 departmentSelect.addEventListener('change', async () => {
     const departmentId = departmentSelect.value;
-    townshipSelect.innerHTML = '<option value="">Selecciona un municipio</option>'; // Resetea el select de municipios
-    townshipSelect.style.display = 'none'; // Oculta el select de municipios inicialmente
-    document.getElementById('fetchButton').style.display = 'none'; // Oculta el botón
+    townshipSelect.innerHTML = '<option value="">Selecciona un municipio</option>';
+    townshipSelect.style.display = 'none';
+    document.getElementById('fetchButton').style.display = 'none';
 
     if (departmentId) {
         loadingMessage.style.display = 'block';
@@ -37,8 +37,8 @@ departmentSelect.addEventListener('change', async () => {
                 option.textContent = township.township_name;
                 townshipSelect.appendChild(option);
             });
-            townshipSelect.style.display = 'block'; // Muestra el select de municipios
-            document.getElementById('fetchButton').style.display = 'block'; // Muestra el botón
+            townshipSelect.style.display = 'block';
+            document.getElementById('fetchButton').style.display = 'block'; 
         } catch (error) {
             errorMessage.textContent = 'Error al cargar los municipios: ' + error.message;
         } finally {
