@@ -2,15 +2,15 @@ const url = "http://localhost/red-emprendedor/interactive-map/back/api/category/
 
 const categoryService = {
     getAllCategories: async () => {
-        console.log(`${url}get_all_categories.php`);
+        console.log(`${url}get_all_category.php`); 
         try {
-            const response = await fetch(`${url}get_all_categories.php`);
+            const response = await fetch(`${url}get_all_category.php`); 
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
             }
             const data = await response.json();
             if (!Array.isArray(data)) {
-                throw new Error("La respuesta no es un array válido de municipios.");
+                throw new Error("La respuesta no es un array válido de categorías.");
             }
             return data;
         } catch (error) {
