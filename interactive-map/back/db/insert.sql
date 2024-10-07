@@ -1189,5 +1189,4 @@ INSERT INTO township (township_name, township_entrepreneur, department_id) VALUE
 ('Santa Rosalía', 200, 33),
 ('Cumaribo', 150, 33);
 
-INSERT INTO Category (name, amount_users, image_category)
-("Tecnología", 241, )
+INSERT INTO category (category_name, category_entrepreneur, category_image) VALUES ("Tecnología", 144, "pexels-inmortal-producciones-108299-336232.jpg")
