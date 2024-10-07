@@ -39,7 +39,7 @@ const categoryService = {
             console.error("API ERROR: CREAR CATEGORIA: " + error);
             throw error;
         }
-    },
+    },    
     
 
     updateCategory: async (id, category) => {
