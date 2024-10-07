@@ -29,22 +29,13 @@ CREATE TABLE category (
     PRIMARY KEY (category_id)
 );
 
-CREATE TABLE national_calls (
-    id INT AUTO_INCREMENT,
-    name VARCHAR(60) NOT NULL,
-    category_id INT,
-    township_id int,
-    PRIMARY KEY(id),
-    FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE,
-    FOREIGN KEY (township_id) REFERENCES township(township_id) ON DELETE CASCADE
-);
-
 CREATE TABLE product (
     product_id INT AUTO_INCREMENT,
     product_name VARCHAR(100),
-    product_description TEXT,
-    procuct_date DATE,
-    product_offer TINYINT(1),
     product_image VARCHAR(255),
-    PRIMARY KEY (product_id)
+    product_description TEXT,
+    product_innovation VARCHAR(120),
+    category_fk INT,
+    PRIMARY KEY (product_id),
+    FOREIGN KEY (category_fk) REFERENCES category(category_id) ON DELETE CASCADE
 );
