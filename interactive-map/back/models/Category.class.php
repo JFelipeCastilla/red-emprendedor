@@ -12,13 +12,18 @@ class Category {
         $stmt->bindParam(':category_image', $category_image);
     
         if ($stmt->execute()) {  
-            header('HTTP/1.1 201 Created'); 
-            echo json_encode(['message' => 'Categoría creada correctamente']);
+            return [
+                'message' => 'Categoría creada correctamente',
+                'category_name' => $category_name,
+                'category_entrepreneur' => $category_entrepreneur,
+                'category_image' => $category_image
+            ];
         } else {
-            header('HTTP/1.1 500 Internal Server Error');  
-            echo json_encode(['message' => 'No se pudo crear la categoría']);
+            throw new Exception('No se pudo crear la categoría');
         }
     }
+    
+    
 
     public static function delete_category_by_id($category_id) {
         $database = new Database();

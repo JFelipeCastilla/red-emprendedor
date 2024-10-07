@@ -2,6 +2,7 @@ const url = "http://localhost/red-emprendedor/interactive-map/back/api/category/
 
 const categoryService = {
     getAllCategories: async () => {
+        console.log(`${url}get_all_categories.php`);
         try {
             const response = await fetch(`${url}get_all_categories.php`);
             if (!response.ok) {
