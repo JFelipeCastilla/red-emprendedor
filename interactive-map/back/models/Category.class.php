@@ -2,20 +2,20 @@
 require_once('../../includes/Database.class.php');
 
 class Category {
-    public static function create_category($category_name, $category_entrepreneur, $category_image) {
+    public static function create_category($category_name, $amount_entrepreneur, $category_image) {
         $database = new Database();
         $conn = $database->getConnection();
     
-        $stmt = $conn->prepare('INSERT INTO category(category_name, category_entrepreneur, category_image) VALUES(:category_name, :category_entrepreneur, :category_image)');
+        $stmt = $conn->prepare('INSERT INTO category(category_name, amount_entrepreneur, category_image) VALUES(:category_name, :amount_entrepreneur, :category_image)');
         $stmt->bindParam(':category_name', $category_name);
-        $stmt->bindParam(':category_entrepreneur', $category_entrepreneur);
+        $stmt->bindParam(':amount_entrepreneur', $amount_entrepreneur);
         $stmt->bindParam(':category_image', $category_image);
     
         if ($stmt->execute()) {  
             return [
                 'message' => 'Categoría creada correctamente',
                 'category_name' => $category_name,
-                'category_entrepreneur' => $category_entrepreneur,
+                'amount_entrepreneur' => $amount_entrepreneur,
                 'category_image' => $category_image
             ];
         } else {
@@ -55,14 +55,14 @@ class Category {
         }
     }
 
-    public static function update_category($category_id, $category_name, $category_entrepreneur, $category_image) {
+    public static function update_category($category_id, $category_name, $amount_entrepreneur, $category_image) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('UPDATE category SET category_name=:category_name, category_entrepreneur=:category_entrepreneur, category_image=:category_image WHERE category_id=:category_id');
+        $stmt = $conn->prepare('UPDATE category SET category_name=:category_name, amount_entrepreneur=:amount_entrepreneur, category_image=:category_image WHERE category_id=:category_id');
         $stmt->bindParam(':category_id', $category_id);
         $stmt->bindParam(':category_name', $category_name);
-        $stmt->bindParam(':category_entrepreneur', $category_entrepreneur);
+        $stmt->bindParam(':amount_entrepreneur', $amount_entrepreneur);
         $stmt->bindParam(':category_image', $category_image);
 
         if ($stmt->execute()) {

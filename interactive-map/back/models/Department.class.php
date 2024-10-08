@@ -2,16 +2,16 @@
 require_once('../../includes/Database.class.php');
 
 class Department {
-    public static function create_department($department_name, $description, $department_entrepreneur) {
+    public static function create_department($department_name, $description, $amount_entrepreneur) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('INSERT INTO department (department_name, description, department_entrepreneur) VALUES(:department_name, :description, :department_entrepreneur)');
+        $stmt = $conn->prepare('INSERT INTO department (department_name, description, amount_entrepreneur) VALUES(:department_name, :description, :amount_entrepreneur)');
         $stmt->bindParam(':department_name', $department_name);
         $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':department_entrepreneur', $department_entrepreneur);
+        $stmt->bindParam(':amount_entrepreneur', $amount_entrepreneur);
 
-        if ($stmt->execute()) {  
+        if ($stmt->execute()) {
             header('HTTP/1.1 201 Created');
             echo json_encode(['message' => 'Departamento creado correctamente']);
         } else {
@@ -35,15 +35,15 @@ class Department {
         }
     }
 
-    public static function update_department($department_id, $department_name, $description, $department_entrepreneur) {
+    public static function update_department($department_id, $department_name, $description, $amount_entrepreneur) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('UPDATE department SET department_name=:department_name, description=:description, department_entrepreneur=:department_entrepreneur WHERE department_id=:department_id');
+        $stmt = $conn->prepare('UPDATE department SET department_name=:department_name, description=:description, amount_entrepreneur=:amount_entrepreneur WHERE department_id=:department_id');
         $stmt->bindParam(':department_id', $department_id);
         $stmt->bindParam(':department_name', $department_name);
         $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':department_entrepreneur', $department_entrepreneur);
+        $stmt->bindParam(':amount_entrepreneur', $amount_entrepreneur);
 
         if ($stmt->execute()) {
             header('HTTP/1.1 200 OK');

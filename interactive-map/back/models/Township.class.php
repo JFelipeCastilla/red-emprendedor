@@ -2,14 +2,14 @@
 require_once('../../includes/Database.class.php');
 
 class Township {
-    public static function create_township($township_name, $township_entrepreneur, $department_id) {
+    public static function create_township($township_name, $amount_entrepreneur, $department_fk) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('INSERT INTO township (township_name, township_entrepreneur, department_id) VALUES(:township_name, :township_entrepreneur, :department_id)');
+        $stmt = $conn->prepare('INSERT INTO township (township_name, amount_entrepreneur, department_fk) VALUES(:township_name, :amount_entrepreneur, :department_fk)');
         $stmt->bindParam(':township_name', $township_name);
-        $stmt->bindParam(':township_entrepreneur', $township_entrepreneur);
-        $stmt->bindParam(':department_id', $department_id);
+        $stmt->bindParam(':amount_entrepreneur', $amount_entrepreneur);
+        $stmt->bindParam(':department_fk', $department_fk);
 
         if ($stmt->execute()) {  
             header('HTTP/1.1 201 Created'); 
@@ -25,9 +25,9 @@ class Township {
         $conn = $database->getConnection();
         
         $stmt = $conn->prepare('
-            SELECT t.township_id, t.township_name, t.township_entrepreneur, t.department_id, d.department_name 
+            SELECT t.township_id, t.township_name, t.amount_entrepreneur, t.department_fk, d.department_name 
             FROM township t
-            JOIN department d ON t.department_id = d.department_id
+            JOIN department d ON t.department_fk = d.department_fk
         ');
         
         if ($stmt->execute()) {
@@ -40,18 +40,18 @@ class Township {
         }
     }
 
-    public static function get_townships_by_department($department_id) {
+    public static function get_townships_by_department($department_fk) {
         $database = new Database();
         $conn = $database->getConnection();
         
         $stmt = $conn->prepare('
-            SELECT t.township_id, t.township_name, t.township_entrepreneur, t.department_id, d.department_name 
+            SELECT t.township_id, t.township_name, t.amount_entrepreneur, t.department_fk, d.department_name 
             FROM township t
-            JOIN department d ON t.department_id = d.department_id
-            WHERE t.department_id = :department_id
+            JOIN department d ON t.department_fk = d.department_fk
+            WHERE t.department_fk = :department_fk
         ');
     
-        $stmt->bindParam(':department_id', $department_id, PDO::PARAM_INT);
+        $stmt->bindParam(':department_fk', $department_fk, PDO::PARAM_INT);
         
         if ($stmt->execute()) {
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -63,15 +63,15 @@ class Township {
         }
     }    
 
-    public static function update_township($township_id, $township_name, $township_entrepreneur, $department_id) {
+    public static function update_township($township_id, $township_name, $amount_entrepreneur, $department_fk) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('UPDATE township SET township_name=:township_name, township_entrepreneur=:township_entrepreneur, department_id=:department_id WHERE township_id=:township_id');
+        $stmt = $conn->prepare('UPDATE township SET township_name=:township_name, amount_entrepreneur=:amount_entrepreneur, department_fk=:department_fk WHERE township_id=:township_id');
         $stmt->bindParam(':township_id', $township_id);
         $stmt->bindParam(':township_name', $township_name);
-        $stmt->bindParam(':township_entrepreneur', $township_entrepreneur);
-        $stmt->bindParam(':department_id', $department_id);
+        $stmt->bindParam(':amount_entrepreneur', $amount_entrepreneur);
+        $stmt->bindParam(':department_fk', $department_fk);
 
         if ($stmt->execute()) {
             header('HTTP/1.1 200 OK');

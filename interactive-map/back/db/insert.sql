@@ -1,4 +1,4 @@
-INSERT INTO department (department_name, description, department_entrepreneur) VALUES
+INSERT INTO department (department_name, description, amount_entrepreneur) VALUES
 ("Amazonas", "Región selvática en la frontera con Brasil y Perú, famosa por su biodiversidad y recursos naturales. Leticia es la capital y un destino turístico popular", 500),
 ("Antioquia", "Una región montañosa en el noroeste de Colombia, famosa por su cultura innovadora y la ciudad de Medellín, que ha sido reconocida por su transformación social y urbanística. Es un centro industrial clave del país", 20000),
 ("Arauca", "Región fronteriza rica en petróleo y ganadería, con un clima cálido y una economía basada en la agricultura y la explotación de recursos naturales", 2000),
@@ -33,7 +33,7 @@ INSERT INTO department (department_name, description, department_entrepreneur) V
 ("Vaupés", "Región selvática con poca infraestructura y baja densidad poblacional, rica en cultura indígena. Mitú es un importante centro cultural de la región", 500),
 ("Vichada", "Región con baja densidad poblacional, rica en recursos naturales y biodiversidad. Puerto Carreño es un centro de comercio importante para la región", 1000);
 
-INSERT INTO township (township_name, township_entrepreneur, department_id) VALUES
+INSERT INTO township (township_name, amount_entrepreneur, department_fk) VALUES
 /* Amazonas */
 ('El Encanto', 50, 1),
 ('La Chorrera', 40, 1),
@@ -1188,5 +1188,3 @@ INSERT INTO township (township_name, township_entrepreneur, department_id) VALUE
 ('La Primavera', 250, 33),
 ('Santa Rosalía', 200, 33),
 ('Cumaribo', 150, 33);
-
-INSERT INTO category (category_name, category_entrepreneur, category_image) VALUES ("Tecnología", 144, "pexels-inmortal-producciones-108299-336232.jpg")

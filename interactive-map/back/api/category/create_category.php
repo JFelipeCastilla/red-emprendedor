@@ -36,11 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = $_POST;
 
     // Verificar que los parámetros necesarios están presentes
-    if (isset($data['category_name']) && isset($data['category_entrepreneur'])) {
+    if (isset($data['category_name']) && isset($data['amount_entrepreneur'])) {
         try {
-            $result = Category::create_category($data['category_name'], $data['category_entrepreneur'], $category_image);
+            $result = Category::create_category($data['category_name'], $data['amount_entrepreneur'], $category_image);
             header('Content-Type: application/json');
-            http_response_code(201); // Código 201 para creación exitosa
+            http_response_code(201);
             echo json_encode($result);
         } catch (Exception $e) {
             header('HTTP/1.1 500 Internal Server Error');
