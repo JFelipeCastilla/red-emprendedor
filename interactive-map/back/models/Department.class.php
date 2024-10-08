@@ -35,6 +35,28 @@ class Department {
         }
     }
 
+    public static function get_department_by_id($department_id) {
+        $database = new Database();
+        $conn = $database->getConnection();
+    
+        $stmt = $conn->prepare('SELECT * FROM department WHERE department_id = :department_id');
+        $stmt->bindParam(':department_id', $department_id);
+        
+        if ($stmt->execute()) {
+            $department = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($department) {
+                header('Content-Type: application/json');
+                echo json_encode($department);
+            } else {
+                header('HTTP/1.1 404 Not Found');
+                echo json_encode(['message' => 'Departamento no encontrado']);
+            }
+        } else {
+            header('HTTP/1.1 500 Internal Server Error');
+            echo json_encode(['message' => 'Error al obtener el departamento']);
+        }
+    }
+
     public static function update_department($department_id, $department_name, $description, $amount_entrepreneur) {
         $database = new Database();
         $conn = $database->getConnection();

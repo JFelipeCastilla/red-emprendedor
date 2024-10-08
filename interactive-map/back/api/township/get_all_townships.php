@@ -11,6 +11,11 @@
     require('../../models/Township.class.php');
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        Township::get_all_townships();
+        if (isset($_GET['department_id'])) {
+            $department_fk = intval($_GET['department_fk']);
+            Township::get_townships_by_department($department_fk);
+        } else {
+            Township::get_all_townships();
+        }
     }
 ?>

@@ -27,7 +27,7 @@ class Township {
         $stmt = $conn->prepare('
             SELECT t.township_id, t.township_name, t.amount_entrepreneur, t.department_fk, d.department_name 
             FROM township t
-            JOIN department d ON t.department_fk = d.department_fk
+            JOIN department d ON t.department_fk = d.department_id
         ');
         
         if ($stmt->execute()) {

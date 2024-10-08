@@ -27,8 +27,7 @@ CREATE TABLE category (
     amount_entrepreneur INT, # cantidad de emprendedores en categoria
     category_image VARCHAR(255) UNIQUE,
     township_fk INT,
-    PRIMARY KEY (category_id),
-    FOREIGN KEY (township_fk) REFERENCES township(township_id)
+    PRIMARY KEY (category_id)
 );
 
 CREATE TABLE entrepreneur (
@@ -36,7 +35,9 @@ CREATE TABLE entrepreneur (
     entrepreneur_name VARCHAR(80) NOT NULL UNIQUE,
     social_media VARCHAR(120),
     category_fk INT,
+    department_fk INT,
     PRIMARY KEY (entrepreneur_id),
+    FOREIGN KEY (department_fk) REFERENCES department(department_id),
     FOREIGN KEY (category_fk) REFERENCES category(category_id)
 );
 
