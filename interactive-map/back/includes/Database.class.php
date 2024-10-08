@@ -2,7 +2,7 @@
     class Database {
         private $host = 'localhost:3306';
         private $user = 'root';
-        private $password = '123456';
+        private $password = '';
         private $database = 'apimap';
 
         public function getConnection(){
