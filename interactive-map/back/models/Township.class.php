@@ -44,24 +44,29 @@ class Township {
         $database = new Database();
         $conn = $database->getConnection();
         
-        $stmt = $conn->prepare('
-            SELECT t.township_id, t.township_name, t.amount_entrepreneur, t.department_fk, d.department_name 
-            FROM township t
-            JOIN department d ON t.department_fk = d.department_fk
-            WHERE t.department_fk = :department_fk
-        ');
+        try {
+            $stmt = $conn->prepare('
+                SELECT t.township_id, t.township_name, t.amount_entrepreneur, t.department_fk, d.department_name 
+                FROM township t
+                JOIN department d ON t.department_fk = d.department_id
+                WHERE t.department_fk = :department_fk
+            ');
     
-        $stmt->bindParam(':department_fk', $department_fk, PDO::PARAM_INT);
-        
-        if ($stmt->execute()) {
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            header('Content-Type: application/json');
-            echo json_encode($result);
-        } else {
+            $stmt->bindParam(':department_fk', $department_fk, PDO::PARAM_INT);
+            
+            if ($stmt->execute()) {
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                header('Content-Type: application/json');
+                echo json_encode($result);
+            } else {
+                header('HTTP/1.1 500 Internal Server Error');
+                echo json_encode(['message' => 'Error al obtener los municipios']);
+            }
+        } catch (PDOException $e) {
             header('HTTP/1.1 500 Internal Server Error');
-            echo json_encode(['message' => 'Error al obtener los municipios']);
+            echo json_encode(['message' => 'Error de base de datos', 'error' => $e->getMessage()]);
         }
-    }    
+    }     
 
     public static function update_township($township_id, $township_name, $amount_entrepreneur, $department_fk) {
         $database = new Database();

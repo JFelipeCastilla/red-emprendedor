@@ -34,9 +34,6 @@ class Category {
             $conn = null;
         }
     }
-    
-    
-    
 
     public static function delete_category_by_id($category_id) {
         $database = new Database();
