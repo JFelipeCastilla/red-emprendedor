@@ -1,70 +1,101 @@
+/* Estilos generales */
+body {
+    background-color: #f0f4f8; /* Color de fondo suave */
+    font-family: 'Arial', sans-serif; /* Fuente general */
+}
+
 /* Estilos para el formulario */
 #category-form {
-    background-color: #f5f5f5;
+    background-color: #ffffff; /* Color de fondo blanco */
     max-width: 500px;
     margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
+    padding: 30px;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: box-shadow 0.3s; /* Suavizar el efecto de la sombra */
+}
+
+#category-form:hover {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Efecto al pasar el mouse */
 }
 
 #category-form h1 {
     text-align: center;
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 28px; /* Mayor tamaño de fuente */
+    color: #2c3e50; /* Color oscuro */
+    margin-bottom: 25px;
+    font-weight: 600; /* Negrita */
 }
 
 #category-form div {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Espaciado entre elementos */
 }
 
 #category-form label {
-    font-size: 14px;
-    color: #555;
+    font-size: 16px; /* Tamaño de fuente más grande */
+    color: #34495e; /* Color de texto oscuro */
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px; /* Espaciado inferior */
 }
 
+/* Estilos de los inputs */
 #category-form input[type="text"],
+#category-form input[type="number"],
 #category-form input[type="file"] {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+    padding: 12px; /* Mayor padding */
+    border: 2px solid #3498db; /* Borde azul claro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente más grande */
     box-sizing: border-box;
-    transition: border-color 0.3s;
-}
-
-#category-form input[type="file"] {
-    padding: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Suavizar efectos */
 }
 
 /* Estilo de hover y enfoque */
 #category-form input:focus {
-    border-color: #3498db;
+    border-color: #2980b9; /* Color de borde al enfocar */
     outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Efecto de sombra al enfocar */
 }
 
 /* Botón de enviar */
 #category-form button {
     width: 100%;
     padding: 12px;
-    background-color: #3498db;
+    background-color: #3498db; /* Color de fondo azul claro */
     color: white;
-    font-size: 16px;
+    font-size: 18px; /* Mayor tamaño de fuente */
     font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s; /* Suavizar efectos */
 }
 
+/* Efecto de hover en el botón */
 #category-form button:hover {
-    background-color: #2980b9;
+    background-color: #2980b9; /* Color de fondo más oscuro */
+    transform: translateY(-2px); /* Efecto de elevación */
 }
+
+/* Estilos para mensajes de éxito y error */
+#success-message,
+#error-message {
+    max-width: 500px; /* Alinear con el formulario */
+    margin: 10px auto;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#success-message {
+    color: #2ecc71; /* Verde para mensaje de éxito */
+}
+
+#error-message {
+    color: #e74c3c; /* Rojo para mensaje de error */
+}
+
 
 
 
