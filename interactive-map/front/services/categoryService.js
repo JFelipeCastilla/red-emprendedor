@@ -23,7 +23,7 @@ const categoryService = {
         try {
             const formData = new FormData();
             formData.append('category_name', category.category_name);
-            formData.append('category_entrepreneur', category.category_entrepreneur);
+            formData.append('amount_entrepreneur', category.amount_entrepreneur); // Cambié 'category_entrepreneur' a 'amount_entrepreneur'
             formData.append('category_image', imageFile);
     
             const response = await fetch(`${url}create_category.php`, {
@@ -40,7 +40,7 @@ const categoryService = {
             console.error("API ERROR: CREAR CATEGORIA: " + error);
             throw error;
         }
-    },    
+    },  
     
 
     updateCategory: async (id, category) => {

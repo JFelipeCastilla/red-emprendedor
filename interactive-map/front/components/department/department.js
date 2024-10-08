@@ -30,7 +30,7 @@ function setupRegionClickHandler(regions, departments) {
                     <div class="data-field"><strong>Nombre:</strong> ${department.department_name}</div>
                     <div class="data-field"><strong>Descripción:</strong> ${department.description}</div>
                     <div class="extra-info">
-                        <div class="data-field"><strong>Emprendimientos:</strong> ${department.department_entrepreneur}</div>                        
+                        <div class="data-field"><strong>Emprendimientos:</strong> ${department.amount_entrepreneur}</div>                        
                     </div>
                 `;
             } else {

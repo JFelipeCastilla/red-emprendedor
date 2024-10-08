@@ -26,7 +26,6 @@ CREATE TABLE category (
     category_name varchar(150) NOT NULL,
     amount_entrepreneur INT, # cantidad de emprendedores en categoria
     category_image VARCHAR(255) UNIQUE,
-    township_fk INT,
     PRIMARY KEY (category_id)
 );
 

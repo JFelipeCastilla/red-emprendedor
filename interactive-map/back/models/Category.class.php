@@ -3,25 +3,38 @@ require_once('../../includes/Database.class.php');
 
 class Category {
     public static function create_category($category_name, $amount_entrepreneur, $category_image) {
-        $database = new Database();
-        $conn = $database->getConnection();
+        try {
+            $database = new Database();
+            $conn = $database->getConnection();
     
-        $stmt = $conn->prepare('INSERT INTO category(category_name, amount_entrepreneur, category_image) VALUES(:category_name, :amount_entrepreneur, :category_image)');
-        $stmt->bindParam(':category_name', $category_name);
-        $stmt->bindParam(':amount_entrepreneur', $amount_entrepreneur);
-        $stmt->bindParam(':category_image', $category_image);
+            // Establecer el modo de error para lanzar excepciones
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-        if ($stmt->execute()) {  
-            return [
-                'message' => 'Categoría creada correctamente',
-                'category_name' => $category_name,
-                'amount_entrepreneur' => $amount_entrepreneur,
-                'category_image' => $category_image
-            ];
-        } else {
-            throw new Exception('No se pudo crear la categoría');
+            $stmt = $conn->prepare('INSERT INTO category (category_name, amount_entrepreneur, category_image) VALUES (:category_name, :amount_entrepreneur, :category_image)');
+            $stmt->bindParam(':category_name', $category_name);
+            $stmt->bindParam(':amount_entrepreneur', $amount_entrepreneur);
+            $stmt->bindParam(':category_image', $category_image);
+    
+            if ($stmt->execute()) {  
+                return [
+                    'message' => 'Categoría creada correctamente',
+                    'category_name' => $category_name,
+                    'amount_entrepreneur' => $amount_entrepreneur,
+                    'category_image' => $category_image
+                ];
+            } else {
+                $errorInfo = $stmt->errorInfo();
+                throw new Exception('Error en la ejecución de la consulta: ' . $errorInfo[2]);
+            }
+        } catch (Exception $e) {
+            // Puedes personalizar el mensaje de error aquí si es necesario
+            throw new Exception('Error al crear la categoría: ' . $e->getMessage());
+        } finally {
+            // Cerrar la conexión
+            $conn = null;
         }
     }
+    
     
     
 

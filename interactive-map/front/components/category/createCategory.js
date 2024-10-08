@@ -11,9 +11,18 @@ const errorMessage = document.getElementById('error-message');
 categoryForm.addEventListener('submit', async (event) => {
     event.preventDefault(); 
 
+    const entrepreneurValue = parseInt(categoryEntrepreneurInput.value, 10);
+
+    // Validar que el valor de entrepreneurValue sea un número válido
+    if (isNaN(entrepreneurValue) || entrepreneurValue < 0) {
+        errorMessage.textContent = 'Por favor, introduce un número entero válido para la cantidad de emprendedores.';
+        successMessage.textContent = '';
+        return;
+    }
+
     const category = {
         category_name: categoryNameInput.value,
-        category_entrepreneur: categoryEntrepreneurInput.value,
+        amount_entrepreneur: entrepreneurValue,
     };
 
     const imageFile = categoryImageInput.files[0];
@@ -36,4 +45,3 @@ categoryForm.addEventListener('submit', async (event) => {
         console.log('Archivo de imagen:', imageFile);
     }
 });
-
