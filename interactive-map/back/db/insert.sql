@@ -1193,9 +1193,23 @@ INSERT INTO category (category_name, amount_entrepreneur, category_image) VALUES
 ("Tecnología", 156,"pexels-shvetsa-5614108.jpg"),
 ("Gastronomía", 124,"pexels-shv5614108.jpg");
 
+
 INSERT INTO entrepreneur (entrepreneur_name, social_media, category_fk, department_fk) VALUES
+("Rigoberto Urán", "TenoHand_Dac", 1, 21),
 ("TenoHand", "TenoHand_Incl", 1, 5),
 ("TamalNCU", "TamalNCU", 2, 1);
 
+Select * from entrepreneur;
+
 INSERT INTO product (product_name, product_image, product_innovation, product_description, entrepreneur_fk) VALUES
-("Mano mecanica", "pexels-shvetsa-5614108.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1);
+("Mano Mecanica", "pexels-shvetsa-5614108.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
+("Corazon de Plastico", "front-view-woman-holding-heart-shape.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
+("Escuela", "front-view-woman-holding-heart-shape.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
+("Inteligencia Artificial", "man-with-vr-glasses-experiencing-metaverse.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
+("Bombilla", "pexels-biasousa-2181794.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
+("Curso Programacion", "pexels-cottonbro-4709285.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
+("Curso Matematicas", "pexels-cottonbro-4778613.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
+("Pildoras Inteligentes", "pexels-jeshoots-com-147458-576831.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
+("Almuercitos", "pexels-karolina-grabowska-5718096.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
+("Hierbas Medicinales", "pexels-minan1398-1230157.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
+("Burbujas de Agua", "pexels-obviouslyarthur-1296265.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10);
