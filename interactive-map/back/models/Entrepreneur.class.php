@@ -2,21 +2,22 @@
 require_once('../../includes/Database.class.php');
 
 class Entrepreneur {
-    public static function create_entrepreneur($entrepreneur_name, $social_media, $category_fk) {
+    public static function create_entrepreneur($entrepreneur_name, $social_media, $category_fk, $department_fk) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('INSERT INTO entrepreneur (entrepreneur_name, social_media, category_fk) VALUES (:entrepreneur_name, :social_media, :category_fk)');
+        $stmt = $conn->prepare('INSERT INTO entrepreneur (entrepreneur_name, social_media, category_fk, department_fk) VALUES (:entrepreneur_name, :social_media, :category_fk, :department_fk)');
         $stmt->bindParam(':entrepreneur_name', $entrepreneur_name);
         $stmt->bindParam(':social_media', $social_media);
         $stmt->bindParam(':category_fk', $category_fk);
+        $stmt->bindParam(':department_fk', $department_fk);
 
         if ($stmt->execute()) {
             header('HTTP/1.1 201 Created');
-            echo json_encode(['message' => 'Departamento creado correctamente']);
+            echo json_encode(['message' => 'Emprendedor creado correctamente']);
         } else {
             header('HTTP/1.1 500 Internal Server Error');
-            echo json_encode(['message' => 'No se pudo crear el departamento']);
+            echo json_encode(['message' => 'No se pudo crear el emprendedor']);
         }
     }
 
@@ -35,7 +36,7 @@ class Entrepreneur {
         }
     }
 
-    public static function update_entrepreneur($entrepreneur_id, $entrepreneur_name, $social_media, $category_fk) {
+    public static function update_entrepreneur($entrepreneur_id, $entrepreneur_name, $social_media, $category_fk, $department_fk) {
         $database = new Database();
         $conn = $database->getConnection();
 
@@ -44,6 +45,7 @@ class Entrepreneur {
         $stmt->bindParam(':entrepreneur_name', $entrepreneur_name);
         $stmt->bindParam(':social_media', $social_media);
         $stmt->bindParam(':category_fk', $category_fk);
+        $stmt->bindParam(':department_fk', $department_fk);
 
         if ($stmt->execute()) {
             header('HTTP/1.1 200 OK');

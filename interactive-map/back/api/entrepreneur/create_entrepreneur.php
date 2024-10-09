@@ -14,11 +14,11 @@
         $input = file_get_contents('php://input');
         $data = json_decode($input, true);
 
-        if ($data && isset($data['entrepreneur_name']) && isset($data['social_media']) && isset($data['category_fk'])) {
-            Entrepreneur::create_entrepreneur($data['entrepreneur_name'], $data['social_media'], $data['category_fk']);
+        if ($data && isset($data['entrepreneur_name']) && isset($data['social_media']) && isset($data['category_fk']) && isset($data['department_fk'])) {
+            Entrepreneur::create_entrepreneur($data['entrepreneur_name'], $data['social_media'], $data['category_fk'], $data['department_fk']);
         } else {
             header('HTTP/1.1 400 Bad Request');
             echo json_encode(['message' => 'Missing or invalid parameters']);
-        }
+        }        
     }
 ?>

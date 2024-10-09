@@ -40,31 +40,48 @@ class Township {
         }
     }
 
+    public static function get_township_by_id($township_id) {
+        $database = new Database();
+        $conn = $database->getConnection();
+    
+        $stmt = $conn->prepare('SELECT * FROM township WHERE township_id = :township_id');
+        $stmt->bindParam(':township_id', $township_id);
+        
+        if ($stmt->execute()) {
+            $department = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($department) {
+                header('Content-Type: application/json');
+                echo json_encode($department);
+            } else {
+                header('HTTP/1.1 404 Not Found');
+                echo json_encode(['message' => 'Departamento no encontrado']);
+            }
+        } else {
+            header('HTTP/1.1 500 Internal Server Error');
+            echo json_encode(['message' => 'Error al obtener el departamento']);
+        }
+    }
+
     public static function get_townships_by_department($department_fk) {
         $database = new Database();
         $conn = $database->getConnection();
         
-        try {
-            $stmt = $conn->prepare('
-                SELECT t.township_id, t.township_name, t.amount_entrepreneur, t.department_fk, d.department_name 
-                FROM township t
-                JOIN department d ON t.department_fk = d.department_id
-                WHERE t.department_fk = :department_fk
-            ');
-    
-            $stmt->bindParam(':department_fk', $department_fk, PDO::PARAM_INT);
-            
-            if ($stmt->execute()) {
-                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                header('Content-Type: application/json');
-                echo json_encode($result);
-            } else {
-                header('HTTP/1.1 500 Internal Server Error');
-                echo json_encode(['message' => 'Error al obtener los municipios']);
-            }
-        } catch (PDOException $e) {
+        $stmt = $conn->prepare('
+            SELECT t.township_id, t.township_name, t.amount_entrepreneur, t.department_fk, d.department_name 
+            FROM township t
+            JOIN department d ON t.department_fk = d.department_id
+            WHERE t.department_fk = :department_fk
+        ');
+
+        $stmt->bindParam(':department_fk', $department_fk, PDO::PARAM_INT);
+        
+        if ($stmt->execute()) {
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            header('Content-Type: application/json');
+            echo json_encode($result);
+        } else {
             header('HTTP/1.1 500 Internal Server Error');
-            echo json_encode(['message' => 'Error de base de datos', 'error' => $e->getMessage()]);
+            echo json_encode(['message' => 'Error al obtener los municipios']);
         }
     }     
 
