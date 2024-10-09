@@ -17,6 +17,20 @@ const departmentService = {
             throw error;
         }
     },
+    
+    getEntrepreneursWithDepartmentsAndProducts: async () => {
+        try {
+            const response = await fetch(`${url}get_all_departments.php?get_all_data`);
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error("API ERROR: OBTENER PRODUCTOS CON EMPRENDEDORES Y DEPARTAMENTOS: " + error);
+            throw error;
+        }
+    },
 
     getDepartmentById: async (id) => {
         try {

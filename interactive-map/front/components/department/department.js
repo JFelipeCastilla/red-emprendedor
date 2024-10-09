@@ -1,43 +1,62 @@
-// main.js
-import departmentService from '../../services/departmentService.js';
+import productService from '../../services/departmentService.js';
 
-const regionName = document.getElementById('region-name');
-const regionInfo = document.getElementById('region-info');
-const regions = document.querySelectorAll('.region');
+// Función para renderizar productos por departamento
+const renderProductsByDepartment = (departmentName) => {
+    productService.getEntrepreneursWithDepartmentsAndProducts()
+    .then(products => {
+        // Filtrar productos por el nombre del departamento
+        const filteredProducts = products.filter(product => product.department_name === departmentName);
 
-async function loadDepartments() {
-    try {
-        const departments = await departmentService.getAllDepartments();
-        setupRegionClickHandler(regions, departments);
-    } catch (error) {
-        console.error("Error al cargar los departamentos:", error);
-    }
-}
+        const productContainer = document.getElementById('product-container');
+        productContainer.innerHTML = ''; // Limpiar el contenedor
 
-function setupRegionClickHandler(regions, departments) {
-    regions.forEach(region => {
-        region.addEventListener("click", async function () {
-            const selectedRegionName = this.getAttribute("title");
-            regionName.textContent = `Región: ${selectedRegionName}`;
+        if (filteredProducts.length > 0) {
+            filteredProducts.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.classList.add('product-item');
 
-            const department = departments.find(dep =>
-                dep.department_name.toLowerCase().trim() === selectedRegionName.toLowerCase().trim()
-            );
+                const imgElement = document.createElement('img');
+                imgElement.src = `http://localhost/red-emprendedor/interactive-map/back/api/uploads/${product.product_image}`;
+                imgElement.alt = product.product_name;
 
-            if (department) {
-                regionInfo.innerHTML = `
-                    <div class="data-field"><strong>ID:</strong> ${department.department_id}</div>
-                    <div class="data-field"><strong>Nombre:</strong> ${department.department_name}</div>
-                    <div class="data-field"><strong>Descripción:</strong> ${department.description}</div>
-                    <div class="extra-info">
-                        <div class="data-field"><strong>Emprendimientos:</strong> ${department.amount_entrepreneur}</div>                        
-                    </div>
-                `;
-            } else {
-                regionInfo.innerHTML = `<p>Información no disponible para esta región.</p>`;
-            }
-        });
+                const nameElement = document.createElement('h3');
+                nameElement.textContent = product.product_name;
+
+                const descriptionElement = document.createElement('p');
+                descriptionElement.textContent = `Descripción: ${product.product_description}`;
+
+                const innovationElement = document.createElement('p');
+                innovationElement.textContent = `Innovación: ${product.product_innovation}`;
+
+                const entrepreneurElement = document.createElement('p');
+                entrepreneurElement.textContent = `Emprendedor: ${product.entrepreneur_name}`;
+
+                const departmentElement = document.createElement('p');
+                departmentElement.textContent = `Departamento: ${product.department_name}`;
+
+                productElement.appendChild(imgElement);
+                productElement.appendChild(nameElement);
+                productElement.appendChild(descriptionElement);
+                productElement.appendChild(innovationElement);
+                productElement.appendChild(entrepreneurElement);
+                productElement.appendChild(departmentElement);
+
+                productContainer.appendChild(productElement);
+            });
+        } else {
+            productContainer.innerHTML = '<p>No hay productos disponibles para este departamento.</p>';
+        }
+    })
+    .catch(error => {
+        console.error("Error al obtener los productos:", error);
     });
-}
+};
 
-loadDepartments();
+// Agregar eventos de clic a cada path en el mapa
+const paths = document.querySelectorAll('#map-container path');
+paths.forEach(path => {
+    path.addEventListener('click', (event) => {
+        const departmentName = event.target.getAttribute('title');
+        renderProductsByDepartment(departmentName);
+    });
+});
