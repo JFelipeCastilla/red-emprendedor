@@ -1196,20 +1196,35 @@ INSERT INTO category (category_name, amount_entrepreneur, category_image) VALUES
 
 INSERT INTO entrepreneur (entrepreneur_name, social_media, category_fk, department_fk) VALUES
 ("Rigoberto Urán", "TenoHand_Dac", 1, 21),
-("TenoHand", "TenoHand_Incl", 1, 5),
-("TamalNCU", "TamalNCU", 2, 1);
+("TenoHand", "TenoHand_Incl", 1, 2),
+("TamalNCU", "TamalNCU", 2, 15);
 
 Select * from entrepreneur;
 
 INSERT INTO product (product_name, product_image, product_innovation, product_description, entrepreneur_fk) VALUES
-("Mano Mecanica", "pexels-shvetsa-5614108.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
-("Corazon de Plastico", "front-view-woman-holding-heart-shape.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
-("Escuela", "front-view-woman-holding-heart-shape.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
-("Inteligencia Artificial", "man-with-vr-glasses-experiencing-metaverse.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
-("Bombilla", "pexels-biasousa-2181794.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
-("Curso Programacion", "pexels-cottonbro-4709285.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
-("Curso Matematicas", "pexels-cottonbro-4778613.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
-("Pildoras Inteligentes", "pexels-jeshoots-com-147458-576831.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
-("Almuercitos", "pexels-karolina-grabowska-5718096.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
-("Hierbas Medicinales", "pexels-minan1398-1230157.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10),
-("Burbujas de Agua", "pexels-obviouslyarthur-1296265.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 10);
+/* Meta */
+("Mano Mecanica", "pexels-shvetsa-5614108.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1),
+("Corazon de Plastico", "front-view-woman-holding-heart-shape.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 3),
+("Conferencias De Negocios ", "cheerful-mood-group-people-business-conference-modern-classroom-daytime.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 2),
+("Inteligencia Artificial", "man-with-vr-glasses-experiencing-metaverse.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1),
+("Bombilla", "pexels-biasousa-2181794.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 2),
+("Curso Programacion", "pexels-cottonbro-4709285.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 2),
+("Curso Matematicas", "pexels-cottonbro-4778613.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1),
+("Pildoras Inteligentes", "pexels-jeshoots-com-147458-576831.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 2),
+("Almuercitos", "pexels-karolina-grabowska-5718096.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 3),
+("Hierbas Medicinales", "pexels-minan1398-1230157.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 2),
+("Burbujas de Agua", "pexels-obviouslyarthur-1296265.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 2),
+/* Antioquia */
+("Venta de Ideas", "pexels-olly-3758105.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1),
+("Degustacion de Alimentos", "pexels-olly-3811663.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH",2),
+("Venta de Medicinas", "pexels-pixabay-208512.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 3),
+("Electricidad Limpia", "pexels-pixabay-414837.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1),
+("platillos Caseros", "pexels-rachel-claire-5490922.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 3),
+("Abue Cocinera", "pexels-rdne-5847877.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 2),
+("Servicio de Fotografia", "pexels-thgusstavo-2112411.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 2),
+("Servicio de Arquitectura", "pexels-thirdman-5582599.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1),
+("Servicio de Planeacion", "pexels-thirdman-5584052.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 2),
+("Servicio de Soldadura", "pexels-tima-miroshnichenko-5845913.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 3),
+("luces Neon", "view-laboratory-equipment-neon-lights.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1),
+/* Vichada */
+("Gafas Realidad Virtual", "woman-working-with-virtual-reality-goggles.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 3);
