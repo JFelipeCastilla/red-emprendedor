@@ -12,6 +12,7 @@
     height: 700px;
     border-top: 5px solid #00796b; /* Borde superior colorido para acentuar */
     position: relative; /* Posicionamiento para efectos */
+    overflow-y: auto; /* Añadir desplazamiento vertical */
 }
 
 /* Efecto de animación */
@@ -31,15 +32,6 @@
 .dashboard:hover {
     transform: translateY(-5px); /* Levantar ligeramente */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Sombra más definida al pasar el ratón */
-}
-
-/* Título del dashboard */
-.dashboard h2 {
-    font-size: 1.6em; /* Tamaño de fuente */
-    font-weight: 700; /* Negrita para resaltar */
-    color: #00796b; /* Color de texto */
-    margin-bottom: 20px; /* Espaciado inferior */
-    text-align: center; /* Centrar el texto */
 }
 
 /* Estilos para la barra de desplazamiento */
@@ -62,6 +54,7 @@
     background: #e0e0e0; /* Color de fondo de la pista */
     border-radius: 10px; /* Bordes redondeados */
 }
+
 #product-container {
     display: flex;
     flex-wrap: wrap;
@@ -129,6 +122,7 @@
     max-height: 100px; /* Limitar la altura máxima */
     overflow: hidden; /* Ocultar el desbordamiento */
 }
+
 /* Estilo específico para los textos de innovación y emprendedor */
 .product-item p:nth-child(4), .product-item p:nth-child(5) {
     font-weight: 500;
@@ -155,14 +149,39 @@
 
 /* Ajustes para dispositivos móviles */
 @media (max-width: 768px) {
+    .dashboard {
+        padding: 20px; /* Reducir espaciado interno */
+        height: auto; /* Ajustar la altura automáticamente */
+    }
+
     #product-container {
         justify-content: center;
     }
 
     .product-item {
-        max-width: 100%;
+        max-width: 90%; /* Ajustar ancho en pantallas pequeñas */
+        margin-bottom: 20px; /* Añadir espaciado entre productos */
     }
 }
+
+@media (max-width: 480px) {
+    .dashboard {
+        padding: 15px; /* Ajustar espaciado en pantallas muy pequeñas */
+    }
+
+    .product-item {
+        max-width: 100%; /* Asegurar que el producto ocupe todo el ancho */
+    }
+
+    .product-item h3 {
+        font-size: 1.1em; /* Ajustar tamaño del texto */
+    }
+
+    .product-item p {
+        font-size: 0.8em; /* Ajustar tamaño del texto */
+    }
+}
+
 
 
 

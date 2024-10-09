@@ -3,7 +3,6 @@ DROP DATABASE IF EXISTS apimap;
 CREATE DATABASE apimap;
 
 USE apimap;
-
 CREATE TABLE department (
     department_id INT AUTO_INCREMENT UNIQUE,
     department_name VARCHAR(30) NOT NULL,
