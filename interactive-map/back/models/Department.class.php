@@ -57,6 +57,26 @@ class Department {
         }
     }
 
+    public static function get_entrepreneurs_with_departments_and_products() {
+        $database = new Database();
+        $conn = $database->getConnection();
+        $stmt = $conn->prepare('
+            SELECT d.department_name, e.entrepreneur_name, p.product_name, p.product_image, p.product_description, p.product_innovation  
+            FROM entrepreneur AS e
+            INNER JOIN department AS d ON e.department_fk = d.department_id
+            INNER JOIN product AS p ON e.entrepreneur_id = p.entrepreneur_fk
+        ');
+
+        if ($stmt->execute()) {
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            header('Content-Type: application/json');
+            echo json_encode($result);
+        } else {
+            header('HTTP/1.1 500 Internal Server Error');
+            echo json_encode(['message' => 'Error al obtener datos']);
+        }
+    }
+
     public static function update_department($department_id, $department_name, $description, $amount_entrepreneur) {
         $database = new Database();
         $conn = $database->getConnection();

@@ -1190,10 +1190,12 @@ INSERT INTO township (township_name, amount_entrepreneur, department_fk) VALUES
 ('Cumaribo', 150, 33);
 
 INSERT INTO category (category_name, amount_entrepreneur, category_image) VALUES
-("Tecnología", 156,"pexels-shvetsa-5614108.jpg");
+("Tecnología", 156,"pexels-shvetsa-5614108.jpg"),
+("Gastronomía", 124,"pexels-shv5614108.jpg");
 
 INSERT INTO entrepreneur (entrepreneur_name, social_media, category_fk, department_fk) VALUES
-("TenoHand", "TenoHand_Incl", 1, 5);
+("TenoHand", "TenoHand_Incl", 1, 5),
+("TamalNCU", "TamalNCU", 2, 1);
 
-INSERT INTO product (product_name, product_image, product_innovation, entrepreneur_fk) VALUES
-("Mano mecanica", "pexels-shvetsa-5614108.jpg", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1);
+INSERT INTO product (product_name, product_image, product_innovation, product_description, entrepreneur_fk) VALUES
+("Mano mecanica", "pexels-shvetsa-5614108.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1);

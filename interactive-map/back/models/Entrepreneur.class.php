@@ -36,6 +36,28 @@ class Entrepreneur {
         }
     }
 
+    public static function get_entrepreneur_by_id($entrepreneur_id) {
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $stmt = $conn->prepare('SELECT * FROM entrepreneur WHERE entrepreneur_id = :entrepreneur_id');
+        $stmt->bindParam(':entrepreneur_id', $entrepreneur_id);
+    
+        if ($stmt->execute()) {
+            $entrepreneur = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($entrepreneur) {
+                header('Content-Type: application/json');
+                echo json_encode($entrepreneur);
+            } else {
+                header('HTTP/1.1 404 Not Found');
+                echo json_encode(['message' => 'Emprendedor no encontrado']);
+            }
+        } else {
+            header('HTTP/1.1 500 Internal Server Error');
+            echo json_encode(['message' => 'Error al obtener el emprendedor']);
+        }
+    }
+    
     public static function update_entrepreneur($entrepreneur_id, $entrepreneur_name, $social_media, $category_fk, $department_fk) {
         $database = new Database();
         $conn = $database->getConnection();

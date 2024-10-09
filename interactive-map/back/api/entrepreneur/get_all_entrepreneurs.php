@@ -11,6 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 require_once('../../models/Entrepreneur.class.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    Entrepreneur::get_all_entrepreneurs();
+    if (isset($_GET['entrepreneur_id'])) {
+        $entrepreneur_id = intval($_GET['entrepreneur_id']);
+        Entrepreneur::get_entrepreneur_by_id($entrepreneur_id);
+    } else {
+        Entrepreneur::get_all_entrepreneurs();
+    }
 }
 ?>
