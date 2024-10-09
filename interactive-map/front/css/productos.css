@@ -1,0 +1,168 @@
+/* Estilo para el contenedor de productos */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar contenido horizontalmente */
+    padding: 30px; /* Espaciado interno */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 25px; /* Bordes redondeados */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    margin: 20px; /* Espaciado exterior */
+    max-width: 1200px; /* Ancho máximo */
+    height: 700px;
+    border-top: 5px solid #00796b; /* Borde superior colorido para acentuar */
+    position: relative; /* Posicionamiento para efectos */
+}
+
+/* Efecto de animación */
+.dashboard::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Mover el decorativo arriba */
+    left: 50%;
+    width: 60%;
+    height: 10px;
+    background: linear-gradient(to right, #00796b, #004d40); /* Fondo degradado */
+    border-radius: 10px; /* Bordes redondeados */
+    transform: translateX(-50%); /* Centrar el decorativo */
+}
+
+/* Efecto hover */
+.dashboard:hover {
+    transform: translateY(-5px); /* Levantar ligeramente */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Sombra más definida al pasar el ratón */
+}
+
+/* Título del dashboard */
+.dashboard h2 {
+    font-size: 1.6em; /* Tamaño de fuente */
+    font-weight: 700; /* Negrita para resaltar */
+    color: #00796b; /* Color de texto */
+    margin-bottom: 20px; /* Espaciado inferior */
+    text-align: center; /* Centrar el texto */
+}
+
+/* Estilos para la barra de desplazamiento */
+.dashboard::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento */
+    background: #f0f4f8; /* Color de fondo de la barra */
+}
+
+.dashboard::-webkit-scrollbar-thumb {
+    background-color: #00796b; /* Color de la parte que se mueve */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 3px solid #f0f4f8; /* Espacio entre la barra y el thumb */
+}
+
+.dashboard::-webkit-scrollbar-thumb:hover {
+    background-color: #004d40; /* Color al pasar el ratón */
+}
+
+.dashboard::-webkit-scrollbar-track {
+    background: #e0e0e0; /* Color de fondo de la pista */
+    border-radius: 10px; /* Bordes redondeados */
+}
+#product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    background: linear-gradient(to bottom, #f0f8ff, #ffffff); /* Suavizado del fondo */
+}
+
+/* Estilo para cada producto */
+.product-item {
+    background-color: #fff;
+    border-radius: 15px;
+    border: 1px solid #ddd;  /* Borde más delgado y sutil */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    max-width: 220px;  /* Tamaño compacto */
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Efecto hover en los productos */
+.product-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);  /* Sombra más definida */
+}
+
+/* Estilo para la imagen del producto */
+.product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    max-height: 140px;  /* Limitar altura */
+    object-fit: cover;  /* Recorte de imagen si es necesario */
+}
+
+/* Estilo para el nombre del producto */
+.product-item h3 {
+    font-size: 1.2em;  /* Tamaño ajustado */
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: capitalize; /* Evitar mayúsculas */
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+/* Estilo para la descripción y detalles */
+.product-item p {
+    font-size: 0.85em; /* Tamaño de fuente */
+    color: #555; /* Color del texto */
+    margin: 6px 0; /* Espaciado superior e inferior */
+    line-height: 1.5; /* Altura de línea */
+    word-wrap: break-word; /* Permite que las palabras largas se dividan */
+    display: block; /* Comportamiento como bloque */
+    overflow-wrap: break-word; /* Compatibilidad con navegadores */
+    max-height: 100px; /* Limitar la altura máxima */
+    overflow: hidden; /* Ocultar el desbordamiento */
+}
+/* Estilo específico para los textos de innovación y emprendedor */
+.product-item p:nth-child(4), .product-item p:nth-child(5) {
+    font-weight: 500;
+    color: #00796b;  /* Color de acento más elegante */
+    margin-bottom: 6px;
+}
+
+/* Fondo decorativo para hacer el diseño más elegante */
+.product-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #00796b, #004d40);  /* Barra decorativa de color */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-item:hover::before {
+    opacity: 1;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    #product-container {
+        justify-content: center;
+    }
+
+    .product-item {
+        max-width: 100%;
+    }
+}
+
+
+

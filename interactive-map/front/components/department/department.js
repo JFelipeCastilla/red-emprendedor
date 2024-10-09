@@ -22,9 +22,6 @@ const renderProductsByDepartment = (departmentName) => {
                 const nameElement = document.createElement('h3');
                 nameElement.textContent = product.product_name;
 
-                const descriptionElement = document.createElement('p');
-                descriptionElement.textContent = `Descripción: ${product.product_description}`;
-
                 const innovationElement = document.createElement('p');
                 innovationElement.textContent = `Innovación: ${product.product_innovation}`;
 
@@ -36,7 +33,6 @@ const renderProductsByDepartment = (departmentName) => {
 
                 productElement.appendChild(imgElement);
                 productElement.appendChild(nameElement);
-                productElement.appendChild(descriptionElement);
                 productElement.appendChild(innovationElement);
                 productElement.appendChild(entrepreneurElement);
                 productElement.appendChild(departmentElement);
