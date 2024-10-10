@@ -2,17 +2,17 @@
 .dashboard {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrar contenido horizontalmente */
-    padding: 30px; /* Espaciado interno */
+    align-items: center;
+    padding: 30px;
     background-color: #ffffff; /* Fondo blanco */
-    border-radius: 25px; /* Bordes redondeados */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Sombra más suave */
-    margin: 20px; /* Espaciado exterior */
+    border-radius: 25px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    margin: 20px;
     width: 1200px;
-    max-width: 1200px; /* Ancho máximo */
+    max-width: 1200px;
     height: 700px;
-    border-top: 5px solid #00796b; /* Borde superior colorido para acentuar */
-    position: relative; /* Posicionamiento para efectos */
+    border-top: 5px solid #00796b;
+    position: relative;
     overflow-y: auto; /* Añadir desplazamiento vertical */
 }
 
@@ -20,31 +20,24 @@
 .dashboard::before {
     content: '';
     position: absolute;
-    top: -10px; /* Mover el decorativo arriba */
+    top: -10px;
     left: 50%;
     width: 60%;
     height: 10px;
-    background: linear-gradient(to right, #00796b, #004d40); /* Fondo degradado */
-    border-radius: 10px; /* Bordes redondeados */
-    transform: translateX(-50%); /* Centrar el decorativo */
-}
-
-/* Efecto hover */
-.dashboard:hover {
-    transform: translateY(-5px); /* Levantar ligeramente */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Sombra más definida al pasar el ratón */
+    background: linear-gradient(to right, #00796b, #004d40);
+    border-radius: 10px;
+    transform: translateX(-50%);
 }
 
 /* Estilos para la barra de desplazamiento */
 .dashboard::-webkit-scrollbar {
-    width: 12px; /* Ancho de la barra de desplazamiento */
-    background: #f0f4f8; /* Color de fondo de la barra */
+    width: 10px; /* Ancho de la barra de desplazamiento */
 }
 
 .dashboard::-webkit-scrollbar-thumb {
     background-color: #00796b; /* Color de la parte que se mueve */
     border-radius: 10px; /* Bordes redondeados */
-    border: 3px solid #f0f4f8; /* Espacio entre la barra y el thumb */
+    border: 3px solid transparent; /* Espacio entre la barra y el thumb */
 }
 
 .dashboard::-webkit-scrollbar-thumb:hover {
@@ -52,9 +45,23 @@
 }
 
 .dashboard::-webkit-scrollbar-track {
-    background: #e0e0e0; /* Color de fondo de la pista */
-    border-radius: 10px; /* Bordes redondeados */
+    background: rgba(255, 255, 255, 0); /* Fondo transparente para la pista */
 }
+
+/* Efecto hover */
+.dashboard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 20px;
+        height: auto;
+    }
+}
+
 
 #product-container {
     display: flex;
