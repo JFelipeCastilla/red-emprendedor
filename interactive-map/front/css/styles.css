@@ -34,7 +34,7 @@ svg {
 
 /* Estilo base para las regiones */
 .region {
-    fill: #4b9fdf;
+    fill: #5cadeb;
     stroke: #ffffff;
     stroke-width: 2;
     transition: transform 0.2s ease, filter 0.2s ease, fill 0.2s ease;

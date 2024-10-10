@@ -8,6 +8,7 @@
     border-radius: 25px; /* Bordes redondeados */
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Sombra más suave */
     margin: 20px; /* Espaciado exterior */
+    width: 1200px;
     max-width: 1200px; /* Ancho máximo */
     height: 700px;
     border-top: 5px solid #00796b; /* Borde superior colorido para acentuar */
@@ -147,6 +148,37 @@
     opacity: 1;
 }
 
+/* Estilo para el contenedor del indicador de carga */
+#loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+    height: 100vh; /* Altura total de la ventana */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Estilo para el logo del SENA */
+.loading-logo {
+    width: 100px; /* Ajusta el tamaño según necesites */
+    height: auto; /* Mantener la proporción */
+    margin-bottom: 20px; /* Espaciado entre el logo y el texto */
+}
+
+/* Estilo del texto de carga */
+#loading-indicator p {
+    font-size: 16px;
+    color: #555;
+}
 /* Ajustes para dispositivos móviles */
 @media (max-width: 768px) {
     .dashboard {
