@@ -2,14 +2,14 @@
 require_once('../../includes/Database.class.php');
 
 class Department {
-    public static function create_department($department_name, $description, $amount_entrepreneur) {
+    public static function create_department($department_name, $description, $amount_entrepreneurship) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('INSERT INTO department (department_name, description, amount_entrepreneur) VALUES(:department_name, :description, :amount_entrepreneur)');
+        $stmt = $conn->prepare('INSERT INTO department (department_name, description, amount_entrepreneurship) VALUES(:department_name, :description, :amount_entrepreneurship)');
         $stmt->bindParam(':department_name', $department_name);
         $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':amount_entrepreneur', $amount_entrepreneur);
+        $stmt->bindParam(':amount_entrepreneurship', $amount_entrepreneurship);
 
         if ($stmt->execute()) {
             header('HTTP/1.1 201 Created');
@@ -61,10 +61,10 @@ class Department {
         $database = new Database();
         $conn = $database->getConnection();
         $stmt = $conn->prepare('
-            SELECT d.department_name, e.entrepreneur_name, p.product_name, p.product_image, p.product_description, p.product_innovation  
-            FROM entrepreneur AS e
+            SELECT d.department_name, e.entrepreneurship_name, p.product_name, p.product_image, p.product_description, p.product_innovation  
+            FROM entrepreneurship AS e
             INNER JOIN department AS d ON e.department_fk = d.department_id
-            INNER JOIN product AS p ON e.entrepreneur_id = p.entrepreneur_fk
+            INNER JOIN product AS p ON e.entrepreneurship_id = p.entrepreneurship_fk
         ');
 
         if ($stmt->execute()) {
@@ -77,15 +77,15 @@ class Department {
         }
     }
 
-    public static function update_department($department_id, $department_name, $description, $amount_entrepreneur) {
+    public static function update_department($department_id, $department_name, $description, $amount_entrepreneurship) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('UPDATE department SET department_name=:department_name, description=:description, amount_entrepreneur=:amount_entrepreneur WHERE department_id=:department_id');
+        $stmt = $conn->prepare('UPDATE department SET department_name=:department_name, description=:description, amount$amount_entrepreneurship=:amount$amount_entrepreneurship WHERE department_id=:department_id');
         $stmt->bindParam(':department_id', $department_id);
         $stmt->bindParam(':department_name', $department_name);
         $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':amount_entrepreneur', $amount_entrepreneur);
+        $stmt->bindParam(':amount$amount_entrepreneurship', $amount_entrepreneurship);
 
         if ($stmt->execute()) {
             header('HTTP/1.1 200 OK');

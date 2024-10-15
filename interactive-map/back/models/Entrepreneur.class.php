@@ -2,15 +2,16 @@
 require_once('../../includes/Database.class.php');
 
 class Entrepreneur {
-    public static function create_entrepreneur($entrepreneur_name, $social_media, $category_fk, $department_fk) {
+    public static function create_entrepreneur($entrepreneur_name, $social_media, $category_fk, $department_fk, $entrepreneur_fk) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('INSERT INTO entrepreneur (entrepreneur_name, social_media, category_fk, department_fk) VALUES (:entrepreneur_name, :social_media, :category_fk, :department_fk)');
+        $stmt = $conn->prepare('INSERT INTO entrepreneur (entrepreneur_name, entrepreneur_lastname, entrepreneur_email) 
+        VALUES (:entrepreneur_name, :entrepreneur_lastname, :entrepreneur_email)');
+
         $stmt->bindParam(':entrepreneur_name', $entrepreneur_name);
-        $stmt->bindParam(':social_media', $social_media);
-        $stmt->bindParam(':category_fk', $category_fk);
-        $stmt->bindParam(':department_fk', $department_fk);
+        $stmt->bindParam(':entrepreneur_lastname', $entrepreneur_lastname);
+        $stmt->bindParam(':entrepreneur_email', $entrepreneur_email);
 
         if ($stmt->execute()) {
             header('HTTP/1.1 201 Created');
@@ -58,16 +59,18 @@ class Entrepreneur {
         }
     }
     
-    public static function update_entrepreneur($entrepreneur_id, $entrepreneur_name, $social_media, $category_fk, $department_fk) {
+    public static function update_entrepreneur($entrepreneur_id, $entrepreneur_name, $entrepreneur_lastname, $entrepreneur_email) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('UPDATE entrepreneur SET entrepreneur_name=:entrepreneur_name, social_media=:social_media, category_fk=:category_fk WHERE entrepreneur_id=:entrepreneur_id');
+        $stmt = $conn->prepare('UPDATE entrepreneur 
+        SET entrepreneur_name=:entrepreneur_name, entrepreneur_lastname=:entrepreneur_lastname, entrepreneur_email=:entrepreneur_email 
+        WHERE entrepreneur_id=:entrepreneur_id');
+        
         $stmt->bindParam(':entrepreneur_id', $entrepreneur_id);
         $stmt->bindParam(':entrepreneur_name', $entrepreneur_name);
-        $stmt->bindParam(':social_media', $social_media);
-        $stmt->bindParam(':category_fk', $category_fk);
-        $stmt->bindParam(':department_fk', $department_fk);
+        $stmt->bindParam(':entrepreneur_lastname', $entrepreneur_lastname);
+        $stmt->bindParam(':entrepreneur_email', $entrepreneur_email);
 
         if ($stmt->execute()) {
             header('HTTP/1.1 200 OK');

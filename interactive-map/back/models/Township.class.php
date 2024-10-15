@@ -25,7 +25,7 @@ class Township {
         $conn = $database->getConnection();
         
         $stmt = $conn->prepare('
-            SELECT t.township_id, t.township_name, t.amount_entrepreneur, t.department_fk, d.department_name 
+            SELECT t.township_id, t.township_name, t.amount_entrepreneurship, t.department_fk, d.department_name 
             FROM township t
             JOIN department d ON t.department_fk = d.department_id
         ');
@@ -67,7 +67,7 @@ class Township {
         $conn = $database->getConnection();
         
         $stmt = $conn->prepare('
-            SELECT t.township_id, t.township_name, t.amount_entrepreneur, t.department_fk, d.department_name 
+            SELECT t.township_id, t.township_name, t.amount_entrepreneurship, t.department_fk, d.department_name 
             FROM township t
             JOIN department d ON t.department_fk = d.department_id
             WHERE t.department_fk = :department_fk

@@ -2,16 +2,16 @@
 require_once('../../includes/Database.class.php');
 
 class Product {
-    public static function create_product($product_name, $product_image, $product_description, $product_innovation, $entrepreneur_fk) {
+    public static function create_product($product_name, $product_image, $product_description, $product_innovation, $entrepreneurship_fk) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('INSERT INTO product (product_name, product_image, product_description, product_innovation, entrepreneur_fk) VALUES (:product_name, :product_image, :product_description, :product_innovation, :entrepreneur_fk)');
+        $stmt = $conn->prepare('INSERT INTO product (product_name, product_image, product_description, product_innovation, entrepreneurship_fk) VALUES (:product_name, :product_image, :product_description, :product_innovation, :entrepreneurship_fk)');
         $stmt->bindParam(':product_name', $product_name);
         $stmt->bindParam(':product_image', $product_image);
         $stmt->bindParam(':product_description', $product_description);
         $stmt->bindParam(':product_innovation', $product_innovation);
-        $stmt->bindParam(':entrepreneur_fk', $entrepreneur_fk);
+        $stmt->bindParam(':entrepreneurship_fk', $entrepreneurship_fk);
 
         if ($stmt->execute()) {  
             return [
@@ -20,7 +20,7 @@ class Product {
                 'product_image' => $product_image,
                 'product_description' => $product_description,
                 'product_innovation' => $product_innovation,
-                'entrepreneur_fk' => $entrepreneur_fk
+                'entrepreneurship_fk' => $entrepreneurship_fk
             ];
         } else {
             throw new Exception('No se pudo crear el producto');
@@ -42,18 +42,18 @@ class Product {
         }
     }
 
-    public static function update_product($product_id, $product_name, $product_image, $product_description, $product_innovation, $entrepreneur_fk) {
+    public static function update_product($product_id, $product_name, $product_image, $product_description, $product_innovation, $entrepreneurshipship_fk) {
         $database = new Database();
         $conn = $database->getConnection();
 
         $stmt = $conn->prepare('UPDATE product SET product_name=:product_name, product_image=:product_image, product_description=:product_description,
-        product_innovation=:product_innovation, entrepreneur_fk=:entrepreneur_fk WHERE product_id=:product_id');
+        product_innovation=:product_innovation, entrepreneurship_fk=:entrepreneurship_fk WHERE product_id=:product_id');
         $stmt->bindParam(':product_id', $product_id);
         $stmt->bindParam(':product_name', $product_name);
         $stmt->bindParam(':product_image', $product_image);
         $stmt->bindParam(':product_description', $product_description);
         $stmt->bindParam(':product_innovation', $product_innovation);
-        $stmt->bindParam(':entrepreneur_fk', $entrepreneur_fk);
+        $stmt->bindParam(':entrepreneurship_fk', $entrepreneurship_fk);
 
         if ($stmt->execute()) {
             header('HTTP/1.1 200 OK');

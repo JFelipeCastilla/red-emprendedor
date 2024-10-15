@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     
     $department_id = $_GET['department_id'];
 
-    if ($data && isset($data['department_name']) && isset($data['description']) && isset($data['amount_entrepreneur'])) {
-        Department::update_department($department_id, $data['department_name'], $data['description'], $data['amount_entrepreneur']);
+    if ($data && isset($data['department_name']) && isset($data['description']) && isset($data['amount_entrepreneurship'])) {
+        Department::update_department($department_id, $data['department_name'], $data['description'], $data['amount_entrepreneurship']);
     } else {
         header('HTTP/1.1 400 Bad Request');
         echo 'Missing or invalid parameters';

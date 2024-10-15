@@ -8,14 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-require_once('../../models/entrepreneur.class.php');
+require_once('../../models/entrepreneurship.class.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET['entrepreneur_id'])) {
-        $entrepreneurship_id = intval($_GET['entrepreneur_id']);
-        Entrepreneur::get_entrepreneur_by_id($entrepreneur_id);
+    if (isset($_GET['entrepreneurship_id'])) {
+        $entrepreneurship_id = intval($_GET['entrepreneurship_id']);
+        Entrepreneurship::get_entrepreneurship_by_id($entrepreneurship_id);
     } else {
-        Entrepreneur::get_all_entrepreneurs();
+        Entrepreneurship::get_all_entrepreneurships();
     }
 }
 ?>

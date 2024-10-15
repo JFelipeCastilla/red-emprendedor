@@ -9,8 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
 
     $data = json_decode(file_get_contents("php://input"), true);
 
-    if (isset($data['product_id'], $data['product_name'], $data['product_image'], $data['product_description'], $data['product_innovation'], $data['entrepreneur_fk'])) {
-        Product::update_product($data['product_id'], $data['product_name'], $data['product_image'], $data['product_description'], $data['product_innovation'], $data['entrepreneur_fk']);
+    if (isset($data['product_id'], $data['product_name'], $data['product_image'], $data['product_description'], $data['product_innovation'], $data['entrepreneurship_fk'])) {
+        Product::update_product($data['product_id'], $data['product_name'], $data['product_image'], $data['product_description'], $data['product_innovation'], $data['entrepreneurship_fk']);
         http_response_code(200);
         echo json_encode(['message' => 'Producto actualizado correctamente']);
     } else {

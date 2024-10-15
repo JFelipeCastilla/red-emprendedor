@@ -1,4 +1,4 @@
-INSERT INTO department (department_name, description, amount_entrepreneur) VALUES
+INSERT INTO department (department_name, description, amount_entrepreneurship) VALUES
 ("Amazonas", "Región selvática en la frontera con Brasil y Perú, famosa por su biodiversidad y recursos naturales. Leticia es la capital y un destino turístico popular", 500),
 ("Antioquia", "Una región montañosa en el noroeste de Colombia, famosa por su cultura innovadora y la ciudad de Medellín, que ha sido reconocida por su transformación social y urbanística. Es un centro industrial clave del país", 20000),
 ("Arauca", "Región fronteriza rica en petróleo y ganadería, con un clima cálido y una economía basada en la agricultura y la explotación de recursos naturales", 2000),
@@ -33,7 +33,7 @@ INSERT INTO department (department_name, description, amount_entrepreneur) VALUE
 ("Vaupés", "Región selvática con poca infraestructura y baja densidad poblacional, rica en cultura indígena. Mitú es un importante centro cultural de la región", 500),
 ("Vichada", "Región con baja densidad poblacional, rica en recursos naturales y biodiversidad. Puerto Carreño es un centro de comercio importante para la región", 1000);
 
-INSERT INTO township (township_name, amount_entrepreneur, department_fk) VALUES
+INSERT INTO township (township_name, amount_entrepreneurship, department_fk) VALUES
 /* Amazonas */
 ('El Encanto', 50, 1),
 ('La Chorrera', 40, 1),
@@ -1189,19 +1189,21 @@ INSERT INTO township (township_name, amount_entrepreneur, department_fk) VALUES
 ('Santa Rosalía', 200, 33),
 ('Cumaribo', 150, 33);
 
-INSERT INTO category (category_name, amount_entrepreneur, category_image) VALUES
+INSERT INTO category (category_name, amount_entrepreneurship, category_image) VALUES
 ("Tecnología", 156,"pexels-shvetsa-5614108.jpg"),
 ("Gastronomía", 124,"pexels-shv5614108.jpg");
 
+INSERT INTO entrepreneur (entrepreneur_name, entrepreneur_lastname, entrepreneur_email) VALUES
+("Giraldo", "Monteria","giramontero@gmail.com"),
+("Elpelucas", "Peluquero", "peluquitaspeluquero@outlook.com"),
+("Hermenegildo", "Pezetto", "pehermenegildo@outlook.com");
 
-INSERT INTO entrepreneur (entrepreneur_name, social_media, category_fk, department_fk) VALUES
-("Rigoberto Urán", "TenoHand_Dac", 1, 21),
-("TenoHand", "TenoHand_Incl", 1, 2),
-("TamalNCU", "TamalNCU", 2, 15);
+INSERT INTO entrepreneurship (entrepreneurship_name, entrepreneurship_address, social_media, category_fk, department_fk, entrepreneur_fk) VALUES
+("TecnoHands", "Dirección123","TenoHand_Dac", 1, 21, 1),
+("RestauranteLaAbuela", "Dirección1456", "Restaurante_Abuela20", 1, 2, 2),
+("TamalNCU", "Dirección1789", "TamalNCU", 2, 15, 3);
 
-Select * from entrepreneur;
-
-INSERT INTO product (product_name, product_image, product_innovation, product_description, entrepreneur_fk) VALUES
+INSERT INTO product (product_name, product_image, product_innovation, product_description, entrepreneurship_fk) VALUES
 /* Meta */
 ("Mano Mecanica", "pexels-shvetsa-5614108.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 1),
 ("Corazon de Plastico", "front-view-woman-holding-heart-shape.jpg", "sdfsadfa", "DFHGSADKFHSADJKFHSJKADHFJKSADHFKSADHFKJSDH", 3),

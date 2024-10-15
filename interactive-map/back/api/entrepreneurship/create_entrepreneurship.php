@@ -8,14 +8,14 @@
         exit();
     }
 
-    require_once('../../models/Entrepreneur.class.php');
+    require_once('../../models/Entrepreneurship.class.php');
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $input = file_get_contents('php://input');
         $data = json_decode($input, true);
 
-        if ($data && isset($data['entrepreneur_name']) && isset($data['entrepreneur_lasname']) && isset($data['entrepreneur_email'])) {
-            Entrepreneurship::create_entrepreneur($data['entrepreneur_name'], $data['entrepreneur_lasname'], $data['entrepreneur_email']);
+        if ($data && isset($data['entrepreneurship_name']) && isset($data['entrepreneurship_address']) && isset($data['social_media']) && isset($data['category_fk']) && isset($data['department_fk'])) {
+            Entrepreneurship::create_entrepreneurship($data['entrepreneurship_name'], $data['entrepreneurship_address'], $data['social_media'], $data['category_fk'], $data['department_fk']);
         } else {
             header('HTTP/1.1 400 Bad Request');
             echo json_encode(['message' => 'Missing or invalid parameters']);

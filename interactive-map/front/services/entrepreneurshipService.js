@@ -1,10 +1,10 @@
-const url = "http://localhost/red-emprendedor/interactive-map/back/api/entrepreneur/";
+const url = "http://localhost/red-emprendedor/interactive-map/back/api/entrepreneurship/";
 
-const entrepreneurService = {
+const entrepreneurshipService = {
     // Obtener todos los emprendedores
     getAllEntrepreneurs: async () => {
         try {
-            const response = await fetch(`${url}get_all_entrepreneurs.php`);
+            const response = await fetch(`${url}get_all_entrepreneurships.php`);
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
             }
@@ -20,9 +20,9 @@ const entrepreneurService = {
     },
 
     // Obtener emprendedores por departamento
-    getEntrepreneursByDepartment: async (departmentId) => {
+    getEntrepreneurshipsByDepartment: async (departmentId) => {
         try {
-            const response = await fetch(`${url}get_entrepreneurs_by_department.php?department_id=${departmentId}`);
+            const response = await fetch(`${url}get_entrepreneurships_by_department.php?department_id=${departmentId}`);
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
             }
@@ -38,14 +38,14 @@ const entrepreneurService = {
     },
 
     // Crear un nuevo emprendedor
-    createEntrepreneur: async (entrepreneur) => {
+    createEntrepreneurship: async (entrepreneurship) => {
         try {
-            const response = await fetch(`${url}create_entrepreneur.php`, {
+            const response = await fetch(`${url}create_entrepreneurship.php`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(entrepreneur)
+                body: JSON.stringify(entrepreneurship)
             });
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
@@ -59,14 +59,14 @@ const entrepreneurService = {
     },
 
     // Actualizar un emprendedor
-    updateEntrepreneur: async (id, entrepreneur) => {
+    updateEntrepreneurship: async (id, entrepreneurship) => {
         try {
-            const response = await fetch(`${url}update_entrepreneur.php?id=${id}`, {
+            const response = await fetch(`${url}update_entrepreneurship.php?id=${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(entrepreneur)
+                body: JSON.stringify(entrepreneurship)
             });
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
@@ -82,7 +82,7 @@ const entrepreneurService = {
     // Eliminar un emprendedor
     deleteEntrepreneur: async (id) => {
         try {
-            const response = await fetch(`${url}delete_entrepreneur.php?id=${id}`, {
+            const response = await fetch(`${url}delete_entrepreneurship.php?id=${id}`, {
                 method: 'DELETE'
             });
             if (!response.ok) {
@@ -97,4 +97,4 @@ const entrepreneurService = {
     },
 };
 
-export default entrepreneurService;
+export default entrepreneurshipService;

@@ -70,7 +70,7 @@ const renderProducts = (departmentName = null) => {
                 innovationElement.textContent = `Innovación: ${product.product_innovation}`;
 
                 const entrepreneurElement = document.createElement('p');
-                entrepreneurElement.textContent = `Emprendedor: ${product.entrepreneur_name}`;
+                entrepreneurElement.textContent = `Emprendimiento: ${product.entrepreneurship_name}`;
 
                 const departmentElement = document.createElement('p');
                 departmentElement.textContent = `Departamento: ${product.department_name}`;

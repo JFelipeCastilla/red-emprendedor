@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $data = $_POST;
 
-    if (isset($data['product_name'], $data['product_description'], $data['product_innovation'], $data['entrepreneur_fk'])) {
+    if (isset($data['product_name'], $data['product_description'], $data['product_innovation'], $data['entrepreneurship_fk'])) {
         try {
-            $result = Product::create_product($data['product_name'], $product_image, $data['product_description'], $data['product_innovation'], $data['entrepreneur_fk']);
+            $result = Product::create_product($data['product_name'], $product_image, $data['product_description'], $data['product_innovation'], $data['entrepreneurship_fk']);
             header('Content-Type: application/json');
             http_response_code(201);
             echo json_encode($result);
