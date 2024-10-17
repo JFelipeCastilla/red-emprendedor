@@ -1194,8 +1194,8 @@ INSERT INTO category (category_name, amount_entrepreneurship, category_image) VA
 ("Gastronomía", 124,"pexels-shv5614108.jpg");
 
 INSERT INTO entrepreneur (entrepreneur_name, entrepreneur_lastname, entrepreneur_email) VALUES
-("Giraldo", "Monteria","giramontero@gmail.com"),
-("Elpelucas", "Peluquero", "peluquitaspeluquero@outlook.com"),
+("Giraldo", "Monteria","adrianlopezgallego2@gmail.com"),
+("Elpelucas", "Peluquero", "adrianlopezgallego2@gmail.com"),
 ("Hermenegildo", "Pezetto", "pehermenegildo@outlook.com");
 
 INSERT INTO entrepreneurship (entrepreneurship_name, entrepreneurship_address, social_media, category_fk, department_fk, entrepreneur_fk) VALUES

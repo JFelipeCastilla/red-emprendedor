@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/correo.css">
+</head>
+<body>
+    <button id="openEmailModal">Enviar correo</button>
+
+    <!-- Ventana flotante para seleccionar emprendedores -->
+    <div id="emailModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Seleccionar Emprendedores</h2>
+        <form id="emailForm">
+          <div id="entrepreneurList"></div>
+          <input type="text" id="subject" placeholder="Asunto">
+          <textarea id="body" placeholder="Cuerpo del mensaje"></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+
+
+    <script src="../components/email/EmailModal.js"></script>
+</body>
+</html>

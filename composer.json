@@ -1,0 +1,17 @@
+{
+    "name": "administrador/red-emprendedor",
+    "autoload": {
+        "psr-4": {
+            "Administrador\\RedEmprendedor\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "adrianlopez0289",
+            "email": "136509699+adrianlopez0289@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
