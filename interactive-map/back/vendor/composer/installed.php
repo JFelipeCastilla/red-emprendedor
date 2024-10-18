@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'administrador/red-emprendedor',
+        'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '2d8fa7717f0145dfd27cf4a69967f6d8e097c797',
+        'reference' => '5aee7e3ab5d873392ede298d3e5c0c82b95d7232',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'administrador/red-emprendedor' => array(
+        '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '2d8fa7717f0145dfd27cf4a69967f6d8e097c797',
+            'reference' => '5aee7e3ab5d873392ede298d3e5c0c82b95d7232',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
