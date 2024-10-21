@@ -17,7 +17,11 @@ window.initMap = async function() {
 
         // Usar la variable `emprendimientos` que contiene los datos obtenidos de la API
         emprendimientos.forEach(emprendimiento => {
-            geocodeAddress(emprendimiento.entrepreneurship_address, emprendimiento.entrepreneurship_name, geocoder, mapa);
+            const direccion = emprendimiento.entrepreneurship_address;
+            const localidad = emprendimiento.locality; // Asegúrate de que la localidad está disponible
+
+            console.log(`Geocodificando la dirección: ${direccion}, ${localidad}`);
+            geocodeAddress(direccion, localidad, emprendimiento.entrepreneurship_name, geocoder, mapa);
         });
 
         document.getElementById("ubicacion-actual").addEventListener("click", function() {
@@ -28,30 +32,36 @@ window.initMap = async function() {
     }
 };
 
-function geocodeAddress(direccion, nombre, geocoder, mapa) {
-    console.log(`Geocodificando la dirección: ${direccion}`);
-    geocoder.geocode({ address: direccion }, function(results, status) {
+function geocodeAddress(direccion, localidad, nombre, geocoder, mapa) {
+    // Construir la dirección completa con la localidad
+    const fullAddress = `${direccion}, ${localidad}, Colombia`;
+    
+    console.log(`Geocodificando la dirección completa: ${fullAddress}`);
+
+    geocoder.geocode({ address: fullAddress }, function(results, status) {
         if (status === 'OK') {
-            console.log(`Resultado de geocodificación para ${direccion}:`, results);
-            let marker = new google.maps.Marker({
-                map: mapa,
-                position: results[0].geometry.location,
-                title: nombre,
-            });
+            if (results && results.length > 0) {
+                let marker = new google.maps.Marker({
+                    map: mapa,
+                    position: results[0].geometry.location,
+                    title: nombre,
+                });
 
-            let infoWindow = new google.maps.InfoWindow({
-                content: `<h3>${nombre}</h3><p>${direccion}</p>`,
-            });
+                let infoWindow = new google.maps.InfoWindow({
+                    content: `<h3>${nombre}</h3><p>${direccion}<br>${localidad}</p>`,
+                });
 
-            marker.addListener('click', function() {
-                infoWindow.open(mapa, marker);
-            });
+                marker.addListener('click', function() {
+                    infoWindow.open(mapa, marker);
+                });
+            } else {
+                console.error(`No se encontraron resultados para ${fullAddress}`);
+            }
         } else {
-            console.error(`Error de geocodificación para ${direccion}: ${status}`);
+            console.error(`Error de geocodificación para ${fullAddress}: ${status}`);
         }
     });
 }
-
 
 function mostrarUbicacion(mapa) {
     if (navigator.geolocation) {
