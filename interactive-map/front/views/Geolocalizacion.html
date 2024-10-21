@@ -5,19 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa de Emprendimientos</title>
     <link rel="stylesheet" href="../css/Geolocalizacion.css">
-    <script type="module" src="../js/Geolocalizacion.js" ></script>
-    
+    <link rel="stylesheet" href="../css/header.css">
+    <script type="module" src="../js/Geolocalizacion.js"></script>
 </head>
 <body>
+    <!-- Primer header ya definido en tu CSS de header -->
     <header>
-        <h1>Mapa de Emprendimientos</h1>
-        <button id="ubicacion-actual">Mostrar mi ubicación</button>
+        <div class="logo">
+            <img src="../img/logo-de-Sena-sin-fondo-Blanco-300x300.png" alt="Logo Empresa">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Servicios</a></li>
+                <li>
+                    <a href="#">Vitrina Comercial</a>
+                    <ul>
+                        <li><a href="Mapa.html">Mapa interactivo</a></li>
+                        <li><a href="sendEmail.html">Enviar Correo</a></li>
+                        <li><a href="Geolocalizacion.html">Geolocalizacion</a></li>
+                        <li><a href="#">Producto 4</a></li>
+                        <li><a href="#">Producto 5</a></li>
+                    </ul>
+                </li>
+                <li><a href="paneladmin.html">Panel de Administración</a></li>
+                <li><a href="category.html">Mis Emprendimientos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Botón de iniciar sesión -->
+        <button class="login-btn">Iniciar Sesión</button>
     </header>
+
+    <!-- Cambiamos el segundo header por un section -->
+    <section class="map-header">
+        <h1>Mapa de Emprendimientos</h1>
+        <button id="ubicacion-actual" class="ubicacion-btn">Mostrar mi ubicación</button>
+    </section>
+
     <main>
-        <div id="map" style="width: 100%; height: 600px;"></div>
+        <div id="map" class="map-container"></div>
     </main>
-    
 </body>
 </html>
-
-

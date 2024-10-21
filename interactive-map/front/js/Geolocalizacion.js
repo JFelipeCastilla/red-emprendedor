@@ -1,12 +1,12 @@
 import entrepreneurshipService from '../services/entrepreneurshipService.js';
 
-// Esta función necesita estar definida globalmente para que Google Maps la encuentre
+
 window.initMap = async function() {
     try {
         // Obtener los emprendedores y guardarlos en una variable
         const emprendimientos = await entrepreneurshipService.getAllEntrepreneurs();
 
-        console.log(emprendimientos); // Muestra los emprendedores en la consola para verificar que se obtuvieron correctamente
+        console.log(emprendimientos); 
 
         let mapa = new google.maps.Map(document.getElementById("map"), {
             center: { lat: 4.611, lng: -74.083 },
@@ -18,7 +18,7 @@ window.initMap = async function() {
         // Usar la variable `emprendimientos` que contiene los datos obtenidos de la API
         emprendimientos.forEach(emprendimiento => {
             const direccion = emprendimiento.entrepreneurship_address;
-            const localidad = emprendimiento.locality; // Asegúrate de que la localidad está disponible
+            const localidad = emprendimiento.locality; 
 
             console.log(`Geocodificando la dirección: ${direccion}, ${localidad}`);
             geocodeAddress(direccion, localidad, emprendimiento.entrepreneurship_name, geocoder, mapa);
