@@ -64,34 +64,56 @@ function geocodeAddress(direccion, localidad, nombre, geocoder, mapa) {
 }
 
 function mostrarUbicacion(mapa) {
+    // Verificar si el navegador soporta la geolocalización
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            let pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
+        // Solicitar la ubicación del usuario
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                let pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
 
-            let marker = new google.maps.Marker({
-                position: pos,
-                map: mapa,
-                title: "Tu ubicación",
-            });
+                // Crear un marcador en la ubicación del usuario
+                let marker = new google.maps.Marker({
+                    position: pos,
+                    map: mapa,
+                    title: "Tu ubicación",
+                });
 
-            mapa.setCenter(pos);
-        }, function() {
-            handleLocationError(true);
-        });
+                // Centrar el mapa en la ubicación del usuario
+                mapa.setCenter(pos);
+            },
+            function(error) {
+                handleLocationError(true, error);
+            }
+        );
     } else {
         handleLocationError(false);
     }
 }
 
-function handleLocationError(browserHasGeolocation) {
-    alert(browserHasGeolocation ? 
-        'Error: El servicio de geolocalización ha fallado.' : 
+function handleLocationError(browserHasGeolocation, error) {
+    let errorMessage;
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            errorMessage = "Error: Usuario denegó la solicitud de Geolocalización.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            errorMessage = "Error: La información de ubicación no está disponible.";
+            break;
+        case error.TIMEOUT:
+            errorMessage = "Error: La solicitud para obtener la ubicación ha caducado.";
+            break;
+        case error.UNKNOWN_ERROR:
+            errorMessage = "Error: Ha ocurrido un error desconocido.";
+            break;
+    }
+
+    // Alertar al usuario sobre el error
+    alert(browserHasGeolocation ? errorMessage : 
         'Error: Tu navegador no soporta la geolocalización.');
 }
-
 // Cargar la API de Google Maps
 const script = document.createElement('script');
 script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyArfYseiQvrVzwJhow0p2dgNFb4R78fCfA&callback=initMap&libraries=places';
