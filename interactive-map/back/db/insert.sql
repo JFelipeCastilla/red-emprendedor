@@ -1198,10 +1198,10 @@ INSERT INTO entrepreneur (entrepreneur_name, entrepreneur_lastname, entrepreneur
 ("Elpelucas", "Peluquero", "adrianlopezgallego2@gmail.com"),
 ("Hermenegildo", "Pezetto", "pehermenegildo@outlook.com");
 
-INSERT INTO entrepreneurship (entrepreneurship_name, entrepreneurship_address, social_media, category_fk, department_fk, entrepreneur_fk) VALUES
-("TecnoHands", "Dirección123","TenoHand_Dac", 1, 21, 1),
-("RestauranteLaAbuela", "Dirección1456", "Restaurante_Abuela20", 1, 2, 2),
-("TamalNCU", "Dirección1789", "TamalNCU", 2, 15, 3);
+INSERT INTO entrepreneurship (entrepreneurship_name, entrepreneurship_address, locality, social_media, category_fk, department_fk, entrepreneur_fk) VALUES
+("TecnoHands", "Dirección123", "Usme", "TenoHand_Dac", 1, 21, 1),
+("RestauranteLaAbuela", "Dirección1456", "Ciudad Bolívar", "Restaurante_Abuela20", 1, 2, 2),
+("TamalNCU", "Dirección1789", "Kennedy", "TamalNCU", 2, 15, 3);
 
 INSERT INTO product (product_name, product_image, product_innovation, product_description, entrepreneurship_fk) VALUES
 /* Meta */

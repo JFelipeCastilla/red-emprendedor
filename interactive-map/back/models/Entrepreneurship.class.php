@@ -2,15 +2,16 @@
 require_once('../../includes/Database.class.php');
 
 class Entrepreneurship {
-    public static function create_entrepreneurship($entrepreneurship_name, $social_media, $category_fk, $department_fk, $entrepreneur_fk) {
+    public static function create_entrepreneurship($entrepreneurship_name, $entrepreneurship_address, $locality, $social_media, $category_fk, $department_fk, $entrepreneur_fk) {
         $database = new Database();
         $conn = $database->getConnection();
 
-        $stmt = $conn->prepare('INSERT INTO entrepreneurship (entrepreneurship_name, entrepreneurship_address, social_media, category_fk, department_fk, entrepreneur_fk) 
+        $stmt = $conn->prepare('INSERT INTO entrepreneurship (entrepreneurship_name, entrepreneurship_address, locality, social_media, category_fk, department_fk, entrepreneur_fk) 
         VALUES (:entrepreneurship_name, :entrepreneurship_address, :social_media, :category_fk, :department_fk)');
 
         $stmt->bindParam(':entrepreneurship_name', $entrepreneurship_name);
         $stmt->bindParam(':entrepreneurship_address', $entrepreneurship_address);
+        $stmt->bindParam(':locality', $locality);
         $stmt->bindParam(':social_media', $social_media);
         $stmt->bindParam(':category_fk', $category_fk);
         $stmt->bindParam(':department_fk', $department_fk);
@@ -62,22 +63,29 @@ class Entrepreneurship {
         }
     }
     
-    public static function update_entrepreneurship($entrepreneurship_id, $entrepreneurship_name, $entrepreneurship_address, $social_media, $category_fk, $department_fk, $entrepreneur_fk) {
+    public static function update_entrepreneurship($entrepreneurship_id, $entrepreneurship_name, $entrepreneurship_address, $locality, $social_media, $category_fk, $department_fk, $entrepreneur_fk) {
         $database = new Database();
         $conn = $database->getConnection();
-
+    
         $stmt = $conn->prepare('UPDATE entrepreneurship 
-        SET entrepreneurship_name=:entrepreneurship_name, ,entrepreneurship_address=:entrepreneurship_address social_media=:social_media, category_fk=:category_fk 
+        SET entrepreneurship_name=:entrepreneurship_name, 
+            entrepreneurship_address=:entrepreneurship_address, 
+            locality=:locality, 
+            social_media=:social_media, 
+            category_fk=:category_fk,
+            department_fk=:department_fk,
+            entrepreneur_fk=:entrepreneur_fk
         WHERE entrepreneurship_id=:entrepreneurship_id');
         
         $stmt->bindParam(':entrepreneurship_id', $entrepreneurship_id);
         $stmt->bindParam(':entrepreneurship_name', $entrepreneurship_name);
         $stmt->bindParam(':entrepreneurship_address', $entrepreneurship_address);
+        $stmt->bindParam(':locality', $locality);
         $stmt->bindParam(':social_media', $social_media);
         $stmt->bindParam(':category_fk', $category_fk);
         $stmt->bindParam(':department_fk', $department_fk);
         $stmt->bindParam(':entrepreneur_fk', $entrepreneur_fk);
-
+    
         if ($stmt->execute()) {
             header('HTTP/1.1 200 OK');
             echo json_encode(['message' => 'Emprendedor actualizado correctamente']);
