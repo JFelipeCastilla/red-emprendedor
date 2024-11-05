@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/cookies.css">
+    <script defer src="../js/pushNotification.js"></script>
 </head>
 <body>
     <header>
@@ -13,7 +15,6 @@
         </div>
         <nav>
             <ul>
-                
                 <li><a href="#">Servicios</a></li>
                 <li>
                     <a href="#">Vitrina Comercial</a>
@@ -33,7 +34,9 @@
         <!-- Botón de iniciar sesión -->
         <button class="login-btn">Iniciar Sesión</button>
     </header>
-
-
+    <div id="cookie-notification" class="cookie-notification">
+        <p>Este sitio usa cookies para mejorar la experiencia. ¿Aceptas el uso de cookies?</p>
+        <button id="accept-cookies">Aceptar</button>
+    </div>
 </body>
 </html>
