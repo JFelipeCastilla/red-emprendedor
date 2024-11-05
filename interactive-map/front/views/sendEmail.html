@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>Enviar Correo</title>
+    <link rel="stylesheet" href="../css/email.css">
     <link rel="stylesheet" href="../css/header.css">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -33,7 +36,36 @@
         <!-- Botón de iniciar sesión -->
         <button class="login-btn">Iniciar Sesión</button>
     </header>
+    <main>
+        <div class="container">
+            <!-- Panel de selección de usuarios -->
+            <div id="userList">
+                <h3>Seleccionar Emprendedores</h3>
+                <!-- Usuarios cargados dinámicamente -->
+            </div>
+
+            <!-- Formulario de correo -->
+            <div class="email-form-container">
+                <form id="emailForm">
+                    <label for="to">Destinatarios:</label>
+                    <input type="text" id="to" name="to" placeholder="Seleccione o escriba destinatarios" required>
+
+                    <div id="selectedEmailsContainer"></div>
+
+                    <label for="subject">Asunto:</label>
+                    <input type="text" id="subject" name="subject" required><br><br>
+
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" required></textarea><br><br>
+
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </main>
 
 
+    <script src="../components/entrepreneur/email.js"></script>
 </body>
+
 </html>

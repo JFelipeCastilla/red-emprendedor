@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperación de Contraseña</title>
+    <link rel="stylesheet" href="../css/lostPass.css">
+    <link rel="stylesheet" href="../css/header.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="../img/logo-de-Sena-sin-fondo-Blanco-300x300.png" alt="Logo Empresa" ></a>    
+        </div>
+        <nav>
+            <ul>
+                
+                <li><a href="#">Servicios</a></li>
+                <li>
+                    <a href="#">Vitrina Comercial</a>
+                    <ul>
+                        <li><a href="Mapa.html">Mapa interactivo</a></li>
+                        <li><a href="sendEmail.html">Enviar Correo</a></li>
+                        <li><a href="lostPass.html">Olvide mi Contraseña</a></li>
+                        <li><a href="#">Producto 4</a></li>
+                        <li><a href="#">Producto 5</a></li>
+                    </ul>
+                </li>
+                <li><a href="paneladmin.html">Panel de Administración</a></li>
+                <li><a href="category.html">Mis Emprendimientos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Botón de iniciar sesión -->
+        <button class="login-btn">Iniciar Sesión</button>
+    </header>
+    <main>
+        <div class="recovery-container">
+            <h2>Recuperación de Contraseña</h2>
+            <form id="passwordResetForm">
+                <label for="id-type">Tipo de Identificación:</label>
+                <select id="id-type" name="id_type">
+                    <option value="cc">Cédula de Ciudadanía</option>
+                    <option value="ti">Tarjeta de Identidad</option>
+                    <option value="contraseña">Contraseña</option>
+                    <option value="ce">Cédula de Extranjería</option>
+                </select>
+
+                <label for="idNumber">Número de Identificación:</label>
+                <input type="text" id="idNumber" name="idNumber"
+                    placeholder="Ingresa tu número de identificación">
+
+                <button type="submit" id="submit-btn">Enviar</button>
+            </form>
+            <p id="responseMessage"></p>
+        </div>
+    </main>
+
+
+    <script>
+        document.getElementById("passwordResetForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const idNumber = document.getElementById("idNumber").value;
+
+            const response = await fetch("http://localhost/red-emprendedor/interactive-map/back/api/auth/password_reset_request.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ idNumber })
+            });
+
+            const result = await response.json();
+            document.getElementById("responseMessage").innerText = result.message;
+        });
+    </script>
+</body>
+
+</html>

@@ -1195,8 +1195,11 @@ INSERT INTO category (category_name, amount_entrepreneurship, category_image) VA
 
 INSERT INTO entrepreneur (entrepreneur_name, entrepreneur_lastname, entrepreneur_email) VALUES
 ("Giraldo", "Monteria","adrianlopezgallego2@gmail.com"),
-("Elpelucas", "Peluquero", "adrianlopezgallego2@gmail.com"),
-("Hermenegildo", "Pezetto", "pehermenegildo@outlook.com");
+("William", "Daza", "wdazan@sena.edu.co"),
+("Hermenegildo", "Pezetto", "pehermenegildo@outlook.com"),
+("Felipe", "Rocas", "juanferocas@gmail.com"),
+("Jesus", "espitia", "jesusespitia003@gmail.com"),
+("Adam", "Diaz", "respaldopruebas99@gmail.com");
 
 INSERT INTO entrepreneurship (entrepreneurship_name, entrepreneurship_address, social_media, category_fk, department_fk, entrepreneur_fk) VALUES
 ("TecnoHands", "Dirección123","TenoHand_Dac", 1, 21, 1),
