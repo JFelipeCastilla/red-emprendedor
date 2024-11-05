@@ -40,6 +40,7 @@ CREATE TABLE entrepreneurship (
     entrepreneurship_id INT AUTO_INCREMENT,
     entrepreneurship_name VARCHAR(80) NOT NULL UNIQUE,
     entrepreneurship_address VARCHAR(255),
+    locality VARCHAR(60),
     social_media VARCHAR(120),
     category_fk INT,
     department_fk INT,

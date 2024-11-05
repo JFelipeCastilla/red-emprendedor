@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Categoría</title>
+    <title>Mapa de Emprendimientos</title>
+    <link rel="stylesheet" href="../css/Geolocalizacion.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/category.css">
-    <script defer type="module" src="../components/category/createCategory.js"></script>
+    <script type="module" src="../js/Geolocalizacion.js"></script>
 </head>
 <body>
-    <header>
+    <!-- Primer header ya definido en tu CSS de header -->
+        <header>
         <div class="logo">
             <a href="index.html"><img src="../img/logo-de-Sena-sin-fondo-Blanco-300x300.png" alt="Logo Empresa" ></a>    
         </div>
@@ -35,24 +36,15 @@
         <!-- Botón de iniciar sesión -->
         <button class="login-btn">Iniciar Sesión</button>
     </header>
-    
-    <form id="category-form">
-        <h1>Crear Nueva Categoría</h1>
-        <div>
-            <label for="category-name">Nombre de la categoría:</label>
-            <input type="text" id="category-name" required>
-        </div>
-        <div>
-            <label for="category-entrepreneur">Número Empleados:</label>
-            <input type="number" id="category-entrepreneur" required>
-        </div>
-        <div>
-            <label for="category-image">Imagen de la categoría:</label>
-            <input type="file" id="category-image" accept="image/*" required>
-        </div>
-        <button type="submit">Crear Categoría</button>
-    </form>
-    <div id="success-message"></div>
-    <div id="error-message"></div>
+
+    <!-- Cambiamos el segundo header por un section -->
+    <section class="map-header">
+        <h1>Mapa de Emprendimientos</h1>
+        <button id="ubicacion-actual" class="ubicacion-btn">Mostrar mi ubicación</button>
+    </section>
+
+    <main>
+        <div id="map" class="map-container"></div>
+    </main>
 </body>
 </html>
