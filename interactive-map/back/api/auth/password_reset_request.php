@@ -41,7 +41,7 @@ if ($idNumber) {
             $mail->Body = '
                 <h3>Solicitud de Restablecimiento de Contraseña</h3>
                 <p>Se ha solicitado un restablecimiento de contraseña para tu cuenta. Si no solicitaste esto, ignora este mensaje.</p>
-                <a href="http://localhost/red-emprendedor/interactive-map/front/views/reset_password.html" 
+                <a href="2" 
                    style="display: inline-block; padding: 10px 20px; color: #fff; background-color: #00796b; text-decoration: none; border-radius: 5px; text-align: center;">
                    Restablecer Contraseña
                 </a>
